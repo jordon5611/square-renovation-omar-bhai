@@ -17,11 +17,11 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>(
     (initialFilter as ProjectCategory) || 'all'
   );
-  const [selectedArrondissement, setSelectedArrondissement] = useState<string>('all');
+  const [selectedLocation, setSelectedLocation] = useState<string>('all');
 
   const categories: { id: ProjectCategory; label: string }[] = [
     { id: 'all', label: 'Tous les Chantiers' },
-    { id: 'haussmannien', label: 'Haussmanniens' },
+    { id: 'haussmannien', label: 'Anciens & Haussmanniens' },
     { id: 'contemporain', label: 'Contemporains' },
     { id: 'familial', label: 'Familiaux' },
     { id: 'loft', label: 'Lofts & Atypiques' },
@@ -31,8 +31,8 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
 
   const filteredProjects = PROJECTS.filter(project => {
     const matchCategory = selectedCategory === 'all' || project.category === selectedCategory;
-    const matchArr = selectedArrondissement === 'all' || project.arrondissement.includes(selectedArrondissement);
-    return matchCategory && matchArr;
+    const matchLoc = selectedLocation === 'all' || project.location.toLowerCase().includes(selectedLocation.toLowerCase());
+    return matchCategory && matchLoc;
   });
 
   return (
@@ -43,7 +43,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" 
-            alt="Réalisations Square Rénovation" 
+            alt="Réalisations MR ZAHID Île-de-France" 
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
@@ -55,10 +55,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
             GALERIE DE CHANTIERS LIVRÉS
           </div>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold uppercase tracking-tight text-white">
-            Nos Réalisations de Rénovation à Paris
+            Nos Réalisations en Île-de-France
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Découvrez nos appartements haussmanniens sublimés, lofts contemporains et espaces sur-mesure réalisés par nos équipes Tous Corps d'État.
+            Découvrez nos chantiers de rénovation tout corps d'état réalisés avec soin à travers toute la région Île-de-France.
           </p>
         </div>
       </section>
@@ -84,21 +84,20 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
             ))}
           </div>
 
-          {/* Arrondissement Dropdown */}
+          {/* Location Dropdown */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500 font-semibold uppercase">Arrondissement :</span>
+            <span className="text-xs text-gray-500 font-semibold uppercase">Zone :</span>
             <select
-              value={selectedArrondissement}
-              onChange={(e) => setSelectedArrondissement(e.target.value)}
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
               className="bg-white border border-gray-300 text-xs font-semibold rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-brand-orange"
             >
-              <option value="all">Tout Paris & IDF</option>
-              <option value="4e">Paris 4e (Marais)</option>
-              <option value="6e">Paris 6e (Saint-Germain)</option>
-              <option value="8e">Paris 8e (Montaigne / Madeleine)</option>
-              <option value="11e">Paris 11e (Bastille / Canal)</option>
-              <option value="16e">Paris 16e (Passy / Auteuil)</option>
-              <option value="17e">Paris 17e (Monceau)</option>
+              <option value="all">Toute l'Île-de-France</option>
+              <option value="Paris">Paris (75)</option>
+              <option value="Hauts-de-Seine">Hauts-de-Seine (92)</option>
+              <option value="Seine-Saint-Denis">Seine-Saint-Denis (93)</option>
+              <option value="Val-de-Marne">Val-de-Marne (94)</option>
+              <option value="Yvelines">Yvelines (78)</option>
             </select>
           </div>
 
@@ -121,14 +120,14 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
                 <div className="absolute top-3 left-3 bg-brand-navy/85 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                  {project.arrondissement}
+                  {project.location}
                 </div>
                 <div className="absolute top-3 right-3 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow">
                   {project.categoryLabel}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <span className="text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span>Voir le chantier & photos avant/après</span>
+                    <span>Voir le chantier & photos</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -159,16 +158,16 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
         <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 space-y-4">
           <h3 className="text-xl font-bold uppercase text-brand-dark">
-            Vous souhaitez un résultat similaire pour votre appartement ?
+            Vous souhaitez un chiffrage pour votre bien en Île-de-France ?
           </h3>
           <p className="text-xs text-gray-600 max-w-md mx-auto">
-            Demandez un chiffrage précis de votre projet avec visite conseil gratuite par notre équipe.
+            Mr Zahid se déplace gratuitement pour étudier votre projet et vous établir un devis clair et précis.
           </p>
           <button
             onClick={onOpenQuoteWizard}
             className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest px-8 py-3.5 rounded-xl shadow-sm transition-all"
           >
-            Demander mon devis en ligne
+            Demander mon devis gratuit
           </button>
         </div>
       </section>

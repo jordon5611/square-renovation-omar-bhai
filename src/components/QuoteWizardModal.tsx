@@ -94,10 +94,10 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
         <div className="bg-slate-900 text-white p-6 sm:p-8">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-orange mb-1">
             <Sparkles className="w-3.5 h-3.5" />
-            MR ZAHID • Demande d’Étude & Devis Gratuit
+            BATI • Demande d’Étude & Devis Gratuit
           </div>
           <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
-            Concrétisons vos travaux de rénovation à Paris
+            Concrétisons vos travaux de rénovation en Île-de-France
           </h3>
           
           {/* Progress Bar */}
@@ -134,12 +134,12 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 Demande transmise avec succès !
               </h4>
               <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-                Merci <strong>{formData.fullName || 'Monsieur/Madame'}</strong>. Mr Zahid étudie votre demande pour vos travaux de <strong>{formData.surface} m² à {formData.postalCode}</strong>.
+                Merci <strong>{formData.fullName || 'Monsieur/Madame'}</strong>. Notre équipe étudie votre demande pour vos travaux de <strong>{formData.surface} m² à {formData.postalCode}</strong>.
               </p>
               <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 max-w-md mx-auto text-xs text-brand-dark text-left space-y-2">
                 <div className="flex items-center gap-2 font-bold text-brand-orange">
                   <ShieldCheck className="w-4 h-4" />
-                  Engagements MR ZAHID :
+                  Engagements BATI :
                 </div>
                 <p>1. Contact téléphonique direct sous <strong>24 heures ouvrées</strong>.</p>
                 <p>2. Déplacement gratuit sur place pour métrés et diagnostic.</p>
@@ -151,7 +151,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-lg shadow-sm flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>Joindre Mr Zahid : 06 19 12 85 58</span>
+                  <span>Joindre BATI : 06 19 12 85 58</span>
                 </a>
                 <button
                   onClick={handleResetAndClose}
@@ -213,11 +213,11 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                        Arrondissement / Code postal *
+                        Code postal / Commune en Île-de-France *
                       </label>
                       <input 
                         type="text"
-                        placeholder="ex: 75020, 75011, 75008..."
+                        placeholder="ex: 75020, 92200, 93100, 78000..."
                         value={formData.postalCode}
                         onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
                         className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
@@ -236,7 +236,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                       Sélectionnez les travaux souhaités
                     </label>
                     <p className="text-[11px] text-gray-500 mb-3">
-                      MR ZAHID prend en charge l'ensemble de ces corps de métiers sans intermédiaire.
+                      BATI prend en charge l'ensemble de ces corps de métiers sans intermédiaire.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {allTradesList.map(trade => {
@@ -407,7 +407,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                         required
                       />
                       <span>
-                        J'accepte d'être recontacté(e) par Mr Zahid pour l'établissement de mon devis. Données protégées.
+                        J'accepte d'être recontacté(e) par l'équipe BATI pour l'établissement de mon devis. Données protégées.
                       </span>
                     </label>
                   </div>
@@ -442,7 +442,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 hover:shadow-orange-glow active:scale-95"
                   >
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>Envoyer ma demande à Mr Zahid</span>
+                    <span>Envoyer ma demande à BATI</span>
                   </button>
                 )}
               </div>

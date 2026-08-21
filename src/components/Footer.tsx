@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
             </div>
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-white">Tous Travaux Bâtiment</h4>
-              <p className="text-[11px] text-slate-400">Paris (75) & Île-de-France</p>
+              <p className="text-[11px] text-slate-400">Toute l'Île-de-France & départements limitrophes</p>
             </div>
           </div>
 
@@ -102,13 +102,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
               <div className="h-11 flex items-center justify-center">
                 <img 
                   src="/logo.png" 
-                  alt="Logo MR ZAHID" 
+                  alt="Logo BATI" 
                   className="h-11 w-auto max-w-[60px] object-contain drop-shadow-md"
                 />
               </div>
               <div>
-                <span className="font-heading font-extrabold text-xl tracking-wider text-white">
-                  MR ZAHID
+                <span className="font-heading font-extrabold text-2xl tracking-wider text-white">
+                  BATI
                 </span>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-brand-orange font-bold -mt-0.5">
                   Tous Travaux du Bâtiment
@@ -117,7 +117,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
               </div>
             </div>
             <p className="text-xs leading-relaxed text-slate-400 max-w-sm">
-              Entreprise générale de rénovation d'intérieur et tous travaux du bâtiment à Paris et Île-de-France. Électricité, peinture, parquet, carrelage, placo et plomberie.
+              Entreprise générale de rénovation d'intérieur et tous travaux du bâtiment en Île-de-France. Électricité, peinture, parquet, carrelage, placo et plomberie.
             </p>
             <div className="inline-block px-3 py-1.5 bg-brand-orange/20 border border-brand-orange/30 rounded-lg text-brand-orange text-xs font-bold uppercase tracking-wider">
               Réactivité • Qualité • Fiabilité
@@ -135,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
                   onClick={() => onNavigate('realisations', 'haussmannien')}
                   className="hover:text-brand-orange transition-colors flex items-center gap-1 text-left"
                 >
-                  <span>Appartements Haussmanniens</span>
+                  <span>Appartements Anciens</span>
                 </button>
               </li>
               <li>
@@ -151,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
                   onClick={() => onNavigate('realisations', 'familial')}
                   className="hover:text-brand-orange transition-colors flex items-center gap-1 text-left"
                 >
-                  <span>Appartements Familiaux</span>
+                  <span>Pavillons & Espaces Familiaux</span>
                 </button>
               </li>
               <li>
@@ -175,7 +175,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
                   onClick={() => onNavigate('carte')}
                   className="text-brand-orange hover:underline font-semibold flex items-center gap-1 pt-1"
                 >
-                  <span>Carte des chantiers à Paris</span>
+                  <span>Carte des chantiers en Île-de-France</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </li>
@@ -190,12 +190,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <button onClick={() => onNavigate('societe')} className="hover:text-brand-orange transition-colors">
-                  L'Entreprise MR ZAHID & Méthode
+                  L'Entreprise BATI & Méthode
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('guide')} className="hover:text-brand-orange transition-colors">
-                  Estimation Prix Rénovation m² Paris
+                  Estimation Prix Rénovation m² en Île-de-France
                 </button>
               </li>
               <li>
@@ -215,7 +215,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
               </li>
               <li>
                 <button onClick={onOpenQuoteWizard} className="hover:text-brand-orange transition-colors font-semibold text-brand-orange">
-                  Simulateur de devis en ligne
+                  Demande de devis gratuit
                 </button>
               </li>
             </ul>
@@ -231,8 +231,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
                 <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
                 <div>
                   <span className="text-[10px] text-gray-400 uppercase block font-semibold">Adresse :</span>
-                  <strong className="text-white">2 bis Dupont de l'eure</strong><br />
-                  <span className="text-slate-300">75020 PARIS</span>
+                  <a 
+                    href="https://share.google/zT9GhpQyW8vW8NbKf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-brand-orange transition-colors"
+                  >
+                    <strong className="text-white hover:text-brand-orange">2 bis Dupont de l'eure</strong><br />
+                    <span className="text-slate-300">75020 PARIS (Île-de-France) ↗</span>
+                  </a>
                 </div>
               </div>
 
@@ -271,11 +278,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuoteWizard })
 
         {/* Bottom copyright */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} MR ZAHID - Tous Travaux du Bâtiment (SARL BATI 75). Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} BATI - Tous Travaux du Bâtiment (SARL BATI 75). Tous droits réservés.</p>
           <div className="flex items-center gap-6">
             <span>2 bis Dupont de l'eure, 75020 PARIS</span>
             <span>06 19 12 85 58</span>
-            <span>Mentions Légales</span>
+            <span>Île-de-France</span>
           </div>
         </div>
 

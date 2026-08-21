@@ -52,17 +52,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
             <div className="h-11 flex items-center justify-center group-hover:scale-105 transition-transform">
               <img 
                 src="/logo.png" 
-                alt="MR ZAHID - Bâtiment Paris" 
+                alt="BATI - Bâtiment Île-de-France" 
                 className="h-11 w-auto max-w-[70px] object-contain drop-shadow-sm"
               />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-xl tracking-wider text-brand-dark">MR ZAHID</span>
+                <span className="font-heading font-extrabold text-2xl tracking-wider text-brand-dark">BATI</span>
                 <span className="font-heading font-light text-sm tracking-widest text-brand-orange hidden sm:inline">• BÂTIMENT</span>
               </div>
               <p className="text-[9px] uppercase tracking-[0.2em] text-gray-500 font-semibold -mt-1">
-                Tous Travaux du Bâtiment • Paris & IDF
+                Tous Travaux du Bâtiment • Île-de-France
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                     onClick={() => handleNavClick('realisations', 'haussmannien')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors flex items-center justify-between"
                   >
-                    <span>Appartements Haussmanniens</span>
+                    <span>Appartements Anciens & Haussmanniens</span>
                     <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Cachet & Staff</span>
                   </button>
                   <button 
@@ -156,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                     onClick={() => handleNavClick('realisations', 'familial')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Appartements Familiaux
+                    Appartements & Pavillons Familiaux
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'loft')}
@@ -182,14 +182,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                       className="w-full text-left px-4 py-2 text-xs font-semibold text-brand-orange hover:bg-orange-50 transition-colors flex items-center gap-1.5"
                     >
                       <MapPin className="w-3.5 h-3.5" />
-                      Carte de nos chantiers à Paris
+                      Carte de nos chantiers en Île-de-France
                     </button>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Atelier de Menuiserie */}
+            {/* Menuiserie & Parquet */}
             <button 
               onClick={() => handleNavClick('menuiserie')}
               className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-brand-orange uppercase tracking-wider ${
@@ -299,7 +299,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               onClick={() => handleNavClick('realisations', 'haussmannien')}
               className="block w-full text-left py-1 text-xs text-gray-600 hover:text-brand-orange"
             >
-              • Appartements Haussmanniens
+              • Appartements Anciens
             </button>
             <button 
               onClick={() => handleNavClick('realisations', 'contemporain')}
@@ -317,7 +317,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               onClick={() => handleNavClick('carte')}
               className="block w-full text-left py-1 text-xs font-semibold text-brand-orange"
             >
-              • Carte de nos Chantiers à Paris
+              • Carte des Chantiers en Île-de-France
             </button>
           </div>
           <button 

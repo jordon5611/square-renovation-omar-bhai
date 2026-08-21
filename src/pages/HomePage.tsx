@@ -3,7 +3,6 @@ import { PROJECTS } from '../data/projects';
 import { SERVICES } from '../data/services';
 import { TESTIMONIALS, FAQS } from '../data/testimonials';
 import { Project } from '../types';
-import { CostEstimator } from '../components/CostEstimator';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 import { InteractiveMap } from '../components/InteractiveMap';
 import { 
@@ -34,7 +33,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85" 
-            alt="Rénovation Appartement Paris - MR ZAHID"
+            alt="Rénovation Bâtiment Île-de-France - BATI"
             className="w-full h-full object-cover opacity-35 scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/40" />
@@ -45,16 +44,16 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Badge & Values */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs uppercase tracking-widest font-semibold text-brand-orange animate-fade-in">
             <Sparkles className="w-3.5 h-3.5" />
-            MR ZAHID • TOUS TRAVAUX DU BÂTIMENT • PARIS & IDF
+            BATI • TOUS TRAVAUX DU BÂTIMENT • ÎLE-DE-FRANCE
           </div>
 
           {/* Main Title */}
           <div className="max-w-4xl mx-auto space-y-4">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight uppercase text-white leading-tight">
-              Rénovation & Travaux du Bâtiment <span className="text-brand-orange">à Paris</span>
+              Rénovation & Travaux du Bâtiment <span className="text-brand-orange">en Île-de-France</span>
             </h1>
             <p className="text-sm sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
-              Spécialistes de la rénovation tout corps d'état d’appartements, maisons et locaux. Électricité, peinture, parquet, carrelage, placo et plomberie.
+              Spécialistes de la rénovation tout corps d'état d’appartements, maisons et locaux professionnels. Électricité, peinture, parquet, carrelage, placo et plomberie.
             </p>
             
             <div className="inline-flex items-center justify-center gap-3 text-xs uppercase tracking-widest font-bold text-amber-400 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-xl border border-amber-400/30">
@@ -122,13 +121,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-orange">
               <Award className="w-4 h-4" />
-              MR ZAHID • TOUS CORPS D'ÉTAT À PARIS
+              BATI • TOUS CORPS D'ÉTAT EN ÎLE-DE-FRANCE
             </div>
             <h2 className="text-2xl sm:text-4xl font-heading font-extrabold uppercase text-brand-dark tracking-tight leading-tight">
               Une exécution soignée pour tous vos travaux
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Basée au <strong>2 bis Dupont de l'eure, 75020 Paris</strong>, l'entreprise <strong>MR ZAHID (SARL BATI 75)</strong> intervient sur l’ensemble de la région parisienne. Nous prenons en charge votre chantier de A à Z avec un interlocuteur unique et réactif.
+              L'entreprise <strong>BATI (SARL BATI 75)</strong> intervient sur l’ensemble de l'<strong>Île-de-France</strong>. Nous prenons en charge votre chantier de A à Z avec un interlocuteur unique, réactif et disponible.
             </p>
             
             <div className="space-y-3 pt-2">
@@ -137,7 +136,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-xs text-gray-700">
-                  <strong>Réactivité immédiate :</strong> Déplacement rapide sur Paris et devis détaillé sous 24h à 48h.
+                  <strong>Réactivité immédiate :</strong> Déplacement rapide en Île-de-France et devis détaillé sous 24h à 48h.
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -175,7 +174,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               beforeImage={heroBeforeAfter.imageBefore}
               afterImage={heroBeforeAfter.imageAfter}
               title={heroBeforeAfter.title}
-              subtitle={`${heroBeforeAfter.surface} m² • ${heroBeforeAfter.arrondissement}`}
+              subtitle={`${heroBeforeAfter.surface} m² • Île-de-France`}
             />
           </div>
 
@@ -191,7 +190,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               NOS EXPERTISES TECHNIQUES
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-              Tous Travaux du Bâtiment à Paris
+              Tous Travaux du Bâtiment en Île-de-France
             </h2>
             <p className="text-xs text-gray-500">
               Des compétences complètes pour rénover vos intérieurs du sol au plafond
@@ -253,10 +252,10 @@ export const HomePage: React.FC<HomePageProps> = ({
             MÉTHODOLOGIE ÉPROUVÉE
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-            Votre chantier en 6 étapes sereines avec MR ZAHID
+            Votre chantier en 6 étapes sereines avec BATI
           </h2>
           <p className="text-xs text-gray-500">
-            Un processus cadré pour garantir le budget, la qualité des finitions et le respect des délais.
+            Un processus cadré pour garantir la qualité des finitions et le respect des délais.
           </p>
         </div>
 
@@ -265,7 +264,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {
               step: '01',
               title: 'Visite & Diagnostic Gratuit',
-              desc: 'Rendez-vous sur place à Paris par Mr Zahid pour évaluer l\'état du bien, les réseaux et vos besoins.'
+              desc: 'Rendez-vous sur place en Île-de-France par notre équipe technique pour évaluer l\'état du bien, les réseaux et vos besoins.'
             },
             {
               step: '02',
@@ -275,7 +274,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {
               step: '03',
               title: 'Préparation & Approvisionnement',
-              desc: 'Protection soignée des parties communes de la copropriété et commande des matériaux sélectionnés.'
+              desc: 'Protection soignée des lieux et commande des matériaux sélectionnés.'
             },
             {
               step: '04',
@@ -285,7 +284,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {
               step: '05',
               title: 'Suivi de Chantier en Direct',
-              desc: 'Communication continue avec Mr Zahid pour suivre l\'avancement quotidien des travaux.'
+              desc: 'Communication continue pour suivre l\'avancement quotidien des travaux.'
             },
             {
               step: '06',
@@ -311,43 +310,24 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. INTERACTIVE COST ESTIMATOR */}
-      <section className="bg-slate-900 py-16 sm:py-24 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-              ESTIMATION INSTANTANÉE
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-white tracking-tight">
-              Calculez le budget de vos travaux à Paris
-            </h2>
-            <p className="text-xs text-slate-300">
-              Ajustez les curseurs pour obtenir une estimation immédiate
-            </p>
-          </div>
-
-          <CostEstimator onOpenQuoteWizard={onOpenQuoteWizard} />
-        </div>
-      </section>
-
-      {/* 6. INTERACTIVE MAP OF PROJECTS */}
+      {/* 5. INTERACTIVE MAP OF PROJECTS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-            ANCRAGE PARISIEN
+            COUVERTURE RÉGIONALE
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-            La carte de nos chantiers réalisés à Paris
+            La carte de nos chantiers en Île-de-France
           </h2>
           <p className="text-xs text-gray-500">
-            Explorez nos réalisations dans votre quartier (Paris 20e, 11e, 4e, 16e, 17e, 8e...)
+            Explorez nos réalisations à travers toute la région Île-de-France
           </p>
         </div>
 
         <InteractiveMap onSelectProject={onSelectProject} />
       </section>
 
-      {/* 7. TESTIMONIALS & REVIEWS */}
+      {/* 6. TESTIMONIALS & REVIEWS */}
       <section className="bg-slate-50 py-16 sm:py-24 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
@@ -356,7 +336,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               TÉMOIGNAGES CLIENTS
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-              La satisfaction de nos clients à Paris
+              La satisfaction de nos clients en Île-de-France
             </h2>
             <div className="flex items-center justify-center gap-1.5 text-amber-500 text-sm font-bold">
               <div className="flex">
@@ -397,7 +377,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 8. FAQ ACCORDION */}
+      {/* 7. FAQ ACCORDION */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-2">
           <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
@@ -426,15 +406,15 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 9. FINAL BOTTOM CTA BANNER */}
+      {/* 8. FINAL BOTTOM CTA BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-brand-navy text-white rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
             <h3 className="text-2xl sm:text-4xl font-heading font-extrabold uppercase tracking-tight text-white">
-              Vous avez un projet de travaux à Paris ?
+              Vous avez un projet de travaux en Île-de-France ?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Mr Zahid se déplace gratuitement pour étudier votre projet et vous remettre un devis sur-mesure.
+              BATI se déplace gratuitement pour étudier votre projet et vous remettre un devis sur-mesure.
             </p>
           </div>
 

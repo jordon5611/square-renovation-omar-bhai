@@ -34,7 +34,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=80" 
-            alt="Contact MR ZAHID Bâtiment Paris" 
+            alt="Contact BATI Bâtiment Île-de-France" 
             className="w-full h-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
@@ -43,13 +43,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest">
             <Mail className="w-3.5 h-3.5" />
-            CONTACT DIRECT • MR ZAHID
+            CONTACT DIRECT • BATI
           </div>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold uppercase tracking-tight text-white">
-            Contactez MR ZAHID - Tous Travaux du Bâtiment
+            Contactez BATI - Tous Travaux du Bâtiment
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-            Pour vos travaux d'électricité, peinture, parquet, carrelage, placo et plomberie à Paris et en Île-de-France. Devis et visite gratuits.
+            Pour vos travaux d'électricité, peinture, parquet, carrelage, placo et plomberie en Île-de-France. Devis et visite gratuits.
           </p>
           <div className="inline-block px-4 py-1 rounded-full bg-white/10 text-xs uppercase font-bold tracking-widest text-brand-orange border border-white/15">
             Réactivité • Qualité • Fiabilité
@@ -68,21 +68,34 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 Coordonnées & Informations
               </h2>
               <p className="text-xs text-gray-500 mt-1">
-                Intervention rapide à Paris (75) et dans tous les départements d'Île-de-France.
+                Intervention rapide dans tous les départements d'Île-de-France (75, 92, 93, 94, 78, 91, 95, 77).
               </p>
             </div>
 
             <div className="space-y-4">
-              {/* Address Card */}
-              <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-2xl border border-gray-200">
-                <div className="w-10 h-10 rounded-xl bg-orange-100 text-brand-orange flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div className="text-xs">
-                  <h4 className="font-bold text-brand-dark uppercase">Adresse de l'Entreprise</h4>
-                  <p className="text-gray-900 font-semibold mt-0.5">2 bis Dupont de l'eure</p>
-                  <p className="text-gray-600 font-medium">75020 PARIS</p>
-                  <p className="text-gray-400 text-[11px] mt-0.5">SARL BATI 75</p>
+              {/* Address Card with Google Location Link */}
+              <div className="p-4 bg-slate-50 rounded-2xl border border-gray-200 hover:border-brand-orange transition-colors group">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-orange-100 text-brand-orange flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-brand-orange group-hover:text-white transition-colors">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="text-xs flex-1">
+                    <h4 className="font-bold text-brand-dark uppercase">Adresse du Siège</h4>
+                    <p className="text-gray-900 font-bold mt-0.5">2 bis Dupont de l'eure</p>
+                    <p className="text-gray-600 font-medium">75020 PARIS</p>
+                    <p className="text-gray-400 text-[11px] mt-0.5">SARL BATI 75 • Intervention toute l'Île-de-France</p>
+                    
+                    <a 
+                      href="https://share.google/zT9GhpQyW8vW8NbKf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1.5 bg-brand-orange/10 hover:bg-brand-orange text-brand-orange hover:text-white rounded-lg text-xs font-bold transition-all"
+                    >
+                      <MapPin className="w-3.5 h-3.5" />
+                      <span>Voir sur Google Maps</span>
+                      <span className="text-[10px]">↗</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -92,7 +105,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="text-xs">
-                  <h4 className="font-bold text-brand-dark uppercase">Téléphone Direct (Mr Zahid)</h4>
+                  <h4 className="font-bold text-brand-dark uppercase">Téléphone Direct</h4>
                   <a href="tel:0619128558" className="text-brand-orange font-extrabold text-base block mt-0.5 hover:underline">
                     06 19 12 85 58
                   </a>
@@ -144,7 +157,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 onClick={onOpenQuoteWizard}
                 className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider py-2.5 rounded-lg shadow-sm transition-all text-center"
               >
-                Ouvrir le simulateur de devis
+                Ouvrir le formulaire de devis
               </button>
             </div>
           </div>
@@ -157,10 +170,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-bold uppercase text-brand-dark">
-                  Message transmis à Mr Zahid !
+                  Message transmis à BATI !
                 </h3>
                 <p className="text-xs text-gray-600 max-w-md mx-auto">
-                  Merci <strong>{formData.name}</strong>. Votre demande a bien été reçue. Mr Zahid vous recontactera au <strong>{formData.phone}</strong> dans les plus brefs délais.
+                  Merci <strong>{formData.name}</strong>. Votre demande a bien été reçue. Notre équipe vous recontactera au <strong>{formData.phone}</strong> dans les plus brefs délais.
                 </p>
                 <button
                   onClick={() => setFormSent(false)}
@@ -245,11 +258,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                      Localisation (Arrondissement / Ville)
+                      Localisation (Code Postal / Ville)
                     </label>
                     <input
                       type="text"
-                      placeholder="ex: 75020 Paris, 75011..."
+                      placeholder="ex: 75020 Paris, 92200..."
                       value={formData.postalCode}
                       onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
                       className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-brand-orange"
@@ -277,7 +290,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                     className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 hover:shadow-orange-glow active:scale-95"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Envoyer ma demande à Mr Zahid</span>
+                    <span>Envoyer ma demande à BATI</span>
                   </button>
                 </div>
               </form>

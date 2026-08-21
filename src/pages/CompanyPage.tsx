@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  ShieldCheck, Clock, Users, Building2, Phone, MapPin, Mail, 
+  Building2, Phone, 
   Zap, Paintbrush, Hammer, Grid, SquareCheck, Wrench
 } from 'lucide-react';
 
@@ -18,7 +18,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80" 
-            alt="MR ZAHID Société Bâtiment Paris" 
+            alt="BATI Société Bâtiment Île-de-France" 
             className="w-full h-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
@@ -27,13 +27,13 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest">
             <Building2 className="w-3.5 h-3.5" />
-            ENTREPRISE GÉNÉRALE DE BÂTIMENT À PARIS
+            ENTREPRISE GÉNÉRALE DE BÂTIMENT EN ÎLE-DE-FRANCE
           </div>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold uppercase tracking-tight text-white">
-            MR ZAHID - TOUS TRAVAUX DU BÂTIMENT
+            BATI - TOUS TRAVAUX DU BÂTIMENT
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Spécialistes de la rénovation d’appartements, de maisons et de locaux professionnels à Paris et en Île-de-France. Une structure réactive avec tous les corps d'état intégrés.
+            Spécialistes de la rénovation d’appartements, de maisons et de locaux professionnels en Île-de-France. Une structure réactive avec tous les corps d'état intégrés.
           </p>
           <div className="inline-block px-4 py-1.5 rounded-full bg-black/50 border border-amber-400/40 text-amber-400 font-bold text-xs uppercase tracking-widest">
             Réactivité • Qualité • Fiabilité
@@ -49,10 +49,10 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
               NOTRE PHILOSOPHIE
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-              Une entreprise de confiance pour tous vos travaux à Paris
+              Une entreprise de confiance pour tous vos travaux
             </h2>
             <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-              Implantée au <strong>2 bis Dupont de l'eure, 75020 Paris</strong>, l'entreprise <strong>MR ZAHID (SARL BATI 75)</strong> a bâti sa réputation sur l'exigence de la finition, le respect des délais convenus et une relation client directe sans intermédiaire.
+              Implantée au <strong>2 bis Dupont de l'eure, 75020 Paris</strong>, l'entreprise <strong>BATI (SARL BATI 75)</strong> a bâti sa réputation sur l'exigence de la finition, le respect des délais convenus et une relation client directe sans intermédiaire.
             </p>
             <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
               Que ce soit pour une remise aux normes électrique complète, des travaux de plomberie et sanitaires, la pose de parquets massifs ou stratifiés, des cloisons placo ou une mise en peinture intégrale, nous vous garantissons un travail soigné.
@@ -73,7 +73,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
           <div className="lg:col-span-6">
             <img 
               src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80" 
-              alt="Travaux Bâtiment Paris"
+              alt="Travaux Bâtiment Île-de-France"
               className="w-full h-[420px] object-cover rounded-2xl shadow-luxury border border-gray-100" 
             />
           </div>
@@ -159,10 +159,10 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
       {/* 3. Call to action */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         <h3 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark">
-          Vous avez des travaux à réaliser à Paris ou en Île-de-France ?
+          Vous avez des travaux à réaliser en Île-de-France ?
         </h3>
         <p className="text-xs sm:text-sm text-gray-600 max-w-xl mx-auto">
-          Contactez directement Mr Zahid au <strong>06 19 12 85 58</strong> ou par e-mail à <strong>sarl.bati75@gmail.com</strong> pour convenir d'un rendez-vous sur place.
+          Contactez directement BATI au <strong>06 19 12 85 58</strong> ou par e-mail à <strong>sarl.bati75@gmail.com</strong> pour convenir d'un rendez-vous sur place.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
           <button
