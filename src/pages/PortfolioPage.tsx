@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PROJECTS } from '../data/projects';
 import { Project, ProjectCategory } from '../types';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface PortfolioPageProps {
   initialFilter?: string;
@@ -14,19 +15,20 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
   onSelectProject,
   onOpenQuoteWizard 
 }) => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>(
     (initialFilter as ProjectCategory) || 'all'
   );
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
 
   const categories: { id: ProjectCategory; label: string }[] = [
-    { id: 'all', label: 'Tous les Chantiers' },
-    { id: 'haussmannien', label: 'Anciens & Haussmanniens' },
-    { id: 'contemporain', label: 'Contemporains' },
-    { id: 'familial', label: 'Familiaux' },
-    { id: 'loft', label: 'Lofts & Atypiques' },
-    { id: 'maison', label: 'Maisons & Extensions' },
-    { id: 'pro', label: 'Locaux Professionnels' },
+    { id: 'all', label: t.portfolioPage.allCategories },
+    { id: 'haussmannien', label: t.nav.haussmannien },
+    { id: 'contemporain', label: t.nav.contemporain },
+    { id: 'familial', label: t.nav.familial },
+    { id: 'loft', label: t.nav.loft },
+    { id: 'maison', label: t.nav.maison },
+    { id: 'pro', label: t.nav.pro },
   ];
 
   const filteredProjects = PROJECTS.filter(project => {
@@ -43,7 +45,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" 
-            alt="Réalisations MR ZAHID Île-de-France" 
+            alt="Réalisations BATI Île-de-France" 
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
@@ -52,13 +54,13 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest">
             <Sparkles className="w-3.5 h-3.5" />
-            GALERIE DE CHANTIERS LIVRÉS
+            {t.portfolioPage.badge}
           </div>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold uppercase tracking-tight text-white">
-            Nos Réalisations en Île-de-France
+            {t.portfolioPage.title}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Découvrez nos chantiers de rénovation tout corps d'état réalisés avec soin à travers toute la région Île-de-France.
+            {t.portfolioPage.subtitle}
           </p>
         </div>
       </section>
@@ -86,13 +88,13 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
 
           {/* Location Dropdown */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500 font-semibold uppercase">Zone :</span>
+            <span className="text-xs text-gray-500 font-semibold uppercase">{t.portfolioPage.zoneLabel}</span>
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
               className="bg-white border border-gray-300 text-xs font-semibold rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-brand-orange"
             >
-              <option value="all">Toute l'Île-de-France</option>
+              <option value="all">{t.portfolioPage.allZones}</option>
               <option value="Paris">Paris (75)</option>
               <option value="Hauts-de-Seine">Hauts-de-Seine (92)</option>
               <option value="Seine-Saint-Denis">Seine-Saint-Denis (93)</option>
@@ -127,7 +129,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                   <span className="text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                    <span>Voir le chantier & photos</span>
+                    <span>{t.portfolioPage.hoverDetails}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -144,9 +146,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                 </div>
 
                 <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-slate-600">
-                  <span className="font-semibold">📐 {project.surface} m²</span>
+                  <span className="font-semibold">📐 {project.surface} {t.common.sqm}</span>
                   <span className="font-semibold">⏱️ {project.duration}</span>
-                  <span className="text-brand-orange font-bold">Détails →</span>
+                  <span className="text-brand-orange font-bold">{t.common.viewDetails}</span>
                 </div>
               </div>
             </div>
@@ -158,16 +160,16 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
         <div className="bg-orange-50 border border-orange-200 rounded-2xl p-8 space-y-4">
           <h3 className="text-xl font-bold uppercase text-brand-dark">
-            Vous souhaitez un chiffrage pour votre bien en Île-de-France ?
+            {t.portfolioPage.ctaTitle}
           </h3>
           <p className="text-xs text-gray-600 max-w-md mx-auto">
-            Mr Zahid se déplace gratuitement pour étudier votre projet et vous établir un devis clair et précis.
+            {t.portfolioPage.ctaDesc}
           </p>
           <button
             onClick={onOpenQuoteWizard}
             className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest px-8 py-3.5 rounded-xl shadow-sm transition-all"
           >
-            Demander mon devis gratuit
+            {t.portfolioPage.ctaBtn}
           </button>
         </div>
       </section>

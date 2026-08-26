@@ -4,6 +4,8 @@ import {
   Building2, Hammer, MapPin, Award, CheckCircle2,
   FileText
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
+import { LanguageToggle } from './LanguageToggle';
 
 interface NavbarProps {
   currentPage: string;
@@ -12,6 +14,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQuoteWizard }) => {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [realisationsDropdownOpen, setRealisationsDropdownOpen] = useState(false);
@@ -62,20 +65,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 <span className="font-heading font-light text-sm tracking-widest text-brand-orange hidden sm:inline">• BÂTIMENT</span>
               </div>
               <p className="text-[9px] uppercase tracking-[0.2em] text-gray-500 font-semibold -mt-1">
-                Tous Travaux du Bâtiment • Île-de-France
+                {t.common.companySubtitle}
               </p>
             </div>
           </div>
 
           {/* Desktop Navigation Menu */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
             <button 
               onClick={() => handleNavClick('home')}
               className={`text-sm font-medium transition-colors hover:text-brand-orange uppercase tracking-wider ${
                 currentPage === 'home' ? 'text-brand-orange font-semibold' : 'text-gray-700'
               }`}
             >
-              Accueil
+              {t.nav.home}
             </button>
 
             {/* Dropdown La Société */}
@@ -90,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                   currentPage === 'societe' ? 'text-brand-orange font-semibold' : 'text-gray-700'
                 }`}
               >
-                L'Entreprise
+                {t.nav.company}
                 <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
               </button>
 
@@ -101,21 +104,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                     className="w-full text-left px-4 py-2.5 text-xs font-semibold text-gray-800 hover:bg-orange-50 hover:text-brand-orange transition-colors flex items-center gap-2"
                   >
                     <Building2 className="w-4 h-4 text-brand-slate" />
-                    Qui sommes-nous ?
+                    {t.nav.aboutUs}
                   </button>
                   <button 
                     onClick={() => handleNavClick('societe')}
                     className="w-full text-left px-4 py-2.5 text-xs font-semibold text-gray-800 hover:bg-orange-50 hover:text-brand-orange transition-colors flex items-center gap-2"
                   >
                     <CheckCircle2 className="w-4 h-4 text-brand-slate" />
-                    Nos Engagements & Valeurs
+                    {t.nav.ourMethod}
                   </button>
                   <button 
                     onClick={() => handleNavClick('societe')}
                     className="w-full text-left px-4 py-2.5 text-xs font-semibold text-gray-800 hover:bg-orange-50 hover:text-brand-orange transition-colors flex items-center gap-2"
                   >
                     <Award className="w-4 h-4 text-brand-slate" />
-                    Garantie Décennale & Assurances
+                    {t.nav.insurance}
                   </button>
                 </div>
               )}
@@ -133,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                   currentPage === 'realisations' ? 'text-brand-orange font-semibold' : 'text-gray-700'
                 }`}
               >
-                Réalisations
+                {t.nav.portfolio}
                 <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
               </button>
 
@@ -143,38 +146,38 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                     onClick={() => handleNavClick('realisations', 'haussmannien')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors flex items-center justify-between"
                   >
-                    <span>Appartements Anciens & Haussmanniens</span>
-                    <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Cachet & Staff</span>
+                    <span>{t.nav.haussmannien}</span>
+                    <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">Cachet</span>
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'contemporain')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Appartements Contemporains
+                    {t.nav.contemporain}
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'familial')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Appartements & Pavillons Familiaux
+                    {t.nav.familial}
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'loft')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Lofts & Espaces Atypiques
+                    {t.nav.loft}
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'maison')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Maisons & Extensions
+                    {t.nav.maison}
                   </button>
                   <button 
                     onClick={() => handleNavClick('realisations', 'pro')}
                     className="w-full text-left px-4 py-2 text-xs font-medium text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors"
                   >
-                    Bureaux & Locaux Professionnels
+                    {t.nav.pro}
                   </button>
                   <div className="border-t border-gray-100 mt-1 pt-1">
                     <button 
@@ -182,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                       className="w-full text-left px-4 py-2 text-xs font-semibold text-brand-orange hover:bg-orange-50 transition-colors flex items-center gap-1.5"
                     >
                       <MapPin className="w-3.5 h-3.5" />
-                      Carte de nos chantiers en Île-de-France
+                      {t.nav.mapProjects}
                     </button>
                   </div>
                 </div>
@@ -197,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               }`}
             >
               <Hammer className="w-3.5 h-3.5 text-brand-orange" />
-              Menuiserie & Parquet
+              {t.nav.woodwork}
             </button>
 
             {/* Guide & Simulateur */}
@@ -208,7 +211,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               }`}
             >
               <Calculator className="w-3.5 h-3.5 text-brand-slate" />
-              Guide Prix m²
+              {t.nav.guide}
             </button>
 
             {/* Contact */}
@@ -218,12 +221,15 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 currentPage === 'contact' ? 'text-brand-orange font-semibold' : 'text-gray-700'
               }`}
             >
-              Contact
+              {t.nav.contact}
             </button>
           </nav>
 
-          {/* Quick Actions (Phone & CTA Quote) */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Quick Actions (Language Toggle, Phone & CTA Quote) */}
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4">
+            {/* Language Toggle */}
+            <LanguageToggle />
+
             <a 
               href="tel:0619128558" 
               className="flex items-center gap-2 text-xs font-bold text-brand-slate hover:text-brand-orange transition-colors"
@@ -232,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 <Phone className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-[10px] text-gray-400 block font-normal uppercase">Ligne directe</span>
+                <span className="text-[10px] text-gray-400 block font-normal uppercase">{t.common.directLine}</span>
                 <span className="font-extrabold text-sm text-brand-dark">06 19 12 85 58</span>
               </div>
             </a>
@@ -242,28 +248,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-4 py-2.5 rounded-md shadow-sm transition-all hover:shadow-orange-glow active:scale-95 flex items-center gap-1.5"
             >
               <FileText className="w-3.5 h-3.5" />
-              Devis Gratuit
+              {t.common.freeQuoteBtn}
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button & Mobile Toggle */}
           <div className="lg:hidden flex items-center gap-2">
+            <LanguageToggle />
             <a
               href="tel:0619128558"
-              className="w-9 h-9 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center"
+              className="w-8 h-8 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center"
               aria-label="Appeler"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-3.5 h-3.5" />
             </a>
             <button 
               onClick={onOpenQuoteWizard}
-              className="bg-brand-orange text-white text-[11px] uppercase font-bold tracking-wider px-3 py-1.5 rounded"
+              className="bg-brand-orange text-white text-[11px] uppercase font-bold tracking-wider px-2.5 py-1.5 rounded"
             >
-              Devis
+              {t.common.freeQuoteBtn}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-700 hover:text-brand-orange focus:outline-none"
+              className="p-1.5 text-gray-700 hover:text-brand-orange focus:outline-none"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -276,48 +283,53 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3 animate-fade-in shadow-2xl">
+          {/* Full Language Switcher inside Mobile Drawer */}
+          <div className="pb-2 border-b border-gray-100">
+            <LanguageToggle variant="full" />
+          </div>
+
           <button 
             onClick={() => handleNavClick('home')}
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange"
           >
-            Accueil
+            {t.nav.home}
           </button>
           <button 
             onClick={() => handleNavClick('societe')}
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange"
           >
-            L'Entreprise & Nos Engagements
+            {t.nav.company} & {t.nav.ourMethod}
           </button>
           <button 
             onClick={() => handleNavClick('realisations', 'all')}
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange"
           >
-            Toutes nos Réalisations
+            {t.portfolioPage.allCategories}
           </button>
           <div className="pl-4 space-y-1.5 border-l-2 border-orange-200">
             <button 
               onClick={() => handleNavClick('realisations', 'haussmannien')}
               className="block w-full text-left py-1 text-xs text-gray-600 hover:text-brand-orange"
             >
-              • Appartements Anciens
+              • {t.nav.haussmannien}
             </button>
             <button 
               onClick={() => handleNavClick('realisations', 'contemporain')}
               className="block w-full text-left py-1 text-xs text-gray-600 hover:text-brand-orange"
             >
-              • Appartements Contemporains
+              • {t.nav.contemporain}
             </button>
             <button 
               onClick={() => handleNavClick('realisations', 'loft')}
               className="block w-full text-left py-1 text-xs text-gray-600 hover:text-brand-orange"
             >
-              • Lofts & Espaces Atypiques
+              • {t.nav.loft}
             </button>
             <button 
               onClick={() => handleNavClick('carte')}
               className="block w-full text-left py-1 text-xs font-semibold text-brand-orange"
             >
-              • Carte des Chantiers en Île-de-France
+              • {t.nav.mapProjects}
             </button>
           </div>
           <button 
@@ -325,20 +337,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange flex items-center gap-1.5"
           >
             <Hammer className="w-4 h-4 text-brand-orange" />
-            Menuiserie, Parquet & Agencements
+            {t.nav.woodwork}
           </button>
           <button 
             onClick={() => handleNavClick('guide')}
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange flex items-center gap-1.5"
           >
             <Calculator className="w-4 h-4 text-brand-slate" />
-            Guide Prix m² & Simulateur
+            {t.nav.guide}
           </button>
           <button 
             onClick={() => handleNavClick('contact')}
             className="block w-full text-left py-2 text-sm font-semibold uppercase tracking-wider text-gray-800 hover:text-brand-orange"
           >
-            Contact & Devis
+            {t.nav.contact}
           </button>
 
           <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
@@ -356,7 +368,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               }}
               className="w-full py-3 bg-brand-orange text-white rounded text-sm font-bold uppercase tracking-wider shadow-sm"
             >
-              Demande de Devis Gratuite
+              {t.quoteWizard.title}
             </button>
           </div>
         </div>

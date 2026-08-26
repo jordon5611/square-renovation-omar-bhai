@@ -4,12 +4,14 @@ import {
   CheckCircle2, FileText, Zap, Paintbrush, 
   Hammer, Grid, SquareCheck, Wrench, ShieldCheck
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface ContactPageProps {
   onOpenQuoteWizard: () => void;
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) => {
+  const { t } = useLanguage();
   const [formSent, setFormSent] = useState(false);
   const [formData, setFormData] = useState({
     trade: 'Rénovation Complète / Tous Corps d\'État',
@@ -43,16 +45,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-widest">
             <Mail className="w-3.5 h-3.5" />
-            CONTACT DIRECT • BATI
+            {t.contactPage.badge}
           </div>
           <h1 className="text-3xl sm:text-5xl font-heading font-extrabold uppercase tracking-tight text-white">
-            Contactez BATI - Tous Travaux du Bâtiment
+            {t.contactPage.title}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-            Pour vos travaux d'électricité, peinture, parquet, carrelage, placo et plomberie en Île-de-France. Devis et visite gratuits.
+            {t.contactPage.subtitle}
           </p>
           <div className="inline-block px-4 py-1 rounded-full bg-white/10 text-xs uppercase font-bold tracking-widest text-brand-orange border border-white/15">
-            Réactivité • Qualité • Fiabilité
+            {t.common.valuesTagline}
           </div>
         </div>
       </section>
@@ -65,10 +67,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
           <div className="lg:col-span-5 space-y-6">
             <div>
               <h2 className="text-xl font-bold uppercase text-brand-dark tracking-tight">
-                Coordonnées & Informations
+                {t.contactPage.coordsTitle}
               </h2>
               <p className="text-xs text-gray-500 mt-1">
-                Intervention rapide dans tous les départements d'Île-de-France (75, 92, 93, 94, 78, 91, 95, 77).
+                {t.contactPage.coordsSubtitle}
               </p>
             </div>
 
@@ -80,10 +82,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div className="text-xs flex-1">
-                    <h4 className="font-bold text-brand-dark uppercase">Adresse du Siège</h4>
+                    <h4 className="font-bold text-brand-dark uppercase">{t.contactPage.headquartersTitle}</h4>
                     <p className="text-gray-900 font-bold mt-0.5">2 bis Dupont de l'eure</p>
                     <p className="text-gray-600 font-medium">75020 PARIS</p>
-                    <p className="text-gray-400 text-[11px] mt-0.5">SARL BATI 75 • Intervention toute l'Île-de-France</p>
+                    <p className="text-gray-400 text-[11px] mt-0.5">{t.contactPage.headquartersSub}</p>
                     
                     <a 
                       href="https://share.google/zT9GhpQyW8vW8NbKf" 
@@ -92,7 +94,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                       className="inline-flex items-center gap-1.5 mt-2.5 px-3 py-1.5 bg-brand-orange/10 hover:bg-brand-orange text-brand-orange hover:text-white rounded-lg text-xs font-bold transition-all"
                     >
                       <MapPin className="w-3.5 h-3.5" />
-                      <span>Voir sur Google Maps</span>
+                      <span>{t.common.seeOnGoogleMaps}</span>
                       <span className="text-[10px]">↗</span>
                     </a>
                   </div>
@@ -105,11 +107,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="text-xs">
-                  <h4 className="font-bold text-brand-dark uppercase">Téléphone Direct</h4>
+                  <h4 className="font-bold text-brand-dark uppercase">{t.contactPage.phoneTitle}</h4>
                   <a href="tel:0619128558" className="text-brand-orange font-extrabold text-base block mt-0.5 hover:underline">
                     06 19 12 85 58
                   </a>
-                  <p className="text-gray-500 text-[11px]">Disponible 6j/7 pour urgences et devis</p>
+                  <p className="text-gray-500 text-[11px]">{t.contactPage.phoneSub}</p>
                 </div>
               </div>
 
@@ -119,11 +121,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="text-xs">
-                  <h4 className="font-bold text-brand-dark uppercase">E-mail Officiel</h4>
+                  <h4 className="font-bold text-brand-dark uppercase">{t.contactPage.emailTitle}</h4>
                   <a href="mailto:sarl.bati75@gmail.com" className="text-gray-900 font-semibold block mt-0.5 hover:text-brand-orange">
                     sarl.bati75@gmail.com
                   </a>
-                  <p className="text-gray-400 text-[11px]">Réponse sous 24h ouvrées</p>
+                  <p className="text-gray-400 text-[11px]">{t.contactPage.emailSub}</p>
                 </div>
               </div>
             </div>
@@ -132,15 +134,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
             <div className="bg-slate-900 text-white p-5 rounded-2xl space-y-3">
               <div className="text-xs font-bold uppercase tracking-wider text-brand-orange flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" />
-                Nos Corps de Métiers
+                {t.contactPage.ourTradesTitle}
               </div>
               <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-300">
-                <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-brand-orange" /> Électricité</span>
-                <span className="flex items-center gap-1.5"><Paintbrush className="w-3.5 h-3.5 text-brand-orange" /> Peinture</span>
-                <span className="flex items-center gap-1.5"><Hammer className="w-3.5 h-3.5 text-brand-orange" /> Parquet</span>
-                <span className="flex items-center gap-1.5"><Grid className="w-3.5 h-3.5 text-brand-orange" /> Carrelage</span>
-                <span className="flex items-center gap-1.5"><SquareCheck className="w-3.5 h-3.5 text-brand-orange" /> Placo</span>
-                <span className="flex items-center gap-1.5"><Wrench className="w-3.5 h-3.5 text-brand-orange" /> Plomberie</span>
+                <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.electricity}</span>
+                <span className="flex items-center gap-1.5"><Paintbrush className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.painting}</span>
+                <span className="flex items-center gap-1.5"><Hammer className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.parquet}</span>
+                <span className="flex items-center gap-1.5"><Grid className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.tiling}</span>
+                <span className="flex items-center gap-1.5"><SquareCheck className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.placo}</span>
+                <span className="flex items-center gap-1.5"><Wrench className="w-3.5 h-3.5 text-brand-orange" /> {t.hero.trades.plumbing}</span>
               </div>
             </div>
 
@@ -148,16 +150,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
             <div className="bg-orange-50 border border-orange-200 text-brand-dark p-5 rounded-2xl space-y-2.5">
               <div className="flex items-center gap-2 text-brand-orange text-xs font-bold uppercase">
                 <FileText className="w-4 h-4" />
-                Besoin d'un chiffrage complet ?
+                {t.contactPage.quickQuoteTitle}
               </div>
               <p className="text-xs text-gray-600">
-                Calculez le coût estimatif de vos travaux en 2 minutes avec notre questionnaire interactif.
+                {t.contactPage.quickQuoteDesc}
               </p>
               <button
                 onClick={onOpenQuoteWizard}
                 className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider py-2.5 rounded-lg shadow-sm transition-all text-center"
               >
-                Ouvrir le formulaire de devis
+                {t.contactPage.quickQuoteBtn}
               </button>
             </div>
           </div>
@@ -170,32 +172,32 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-bold uppercase text-brand-dark">
-                  Message transmis à BATI !
+                  {t.contactPage.successTitle}
                 </h3>
                 <p className="text-xs text-gray-600 max-w-md mx-auto">
-                  Merci <strong>{formData.name}</strong>. Votre demande a bien été reçue. Notre équipe vous recontactera au <strong>{formData.phone}</strong> dans les plus brefs délais.
+                  {t.contactPage.successDesc(formData.name, formData.phone)}
                 </p>
                 <button
                   onClick={() => setFormSent(false)}
                   className="mt-4 px-6 py-2.5 bg-brand-slate text-white text-xs uppercase font-bold rounded-lg"
                 >
-                  Envoyer un autre message
+                  {t.contactPage.sendAnotherBtn}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <h3 className="text-base font-bold uppercase text-brand-dark mb-1">
-                    Envoyer une demande de devis direct
+                    {t.contactPage.formTitle}
                   </h3>
                   <p className="text-xs text-gray-500 mb-4">
-                    Remplissez ce formulaire ou appelez directement le <strong className="text-brand-orange">06 19 12 85 58</strong>
+                    {t.contactPage.formSubtitle} <strong className="text-brand-orange">06 19 12 85 58</strong>
                   </p>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                    Prestation principale demandée *
+                    {t.contactPage.tradeLabel}
                   </label>
                   <select
                     value={formData.trade}
@@ -203,12 +205,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                     className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-brand-orange"
                   >
                     <option value="Rénovation Complète / Tous Corps d'État">Rénovation Complète (Tous Corps d'État)</option>
-                    <option value="Électricité">Électricité & Mise aux normes</option>
-                    <option value="Peinture">Peinture murs, plafonds & finitions</option>
-                    <option value="Parquet">Parquet (Pose, ponçage, vitrification)</option>
-                    <option value="Carrelage">Carrelage & Faïence</option>
-                    <option value="Placo">Placo, Cloisons & Isolation</option>
-                    <option value="Plomberie">Plomberie & Salle de bains</option>
+                    <option value="Électricité">{t.hero.trades.electricity} & Mise aux normes</option>
+                    <option value="Peinture">{t.hero.trades.painting} murs, plafonds & finitions</option>
+                    <option value="Parquet">{t.hero.trades.parquet} (Pose, ponçage, vitrification)</option>
+                    <option value="Carrelage">{t.hero.trades.tiling} & Faïence</option>
+                    <option value="Placo">{t.hero.trades.placo}, Cloisons & Isolation</option>
+                    <option value="Plomberie">{t.hero.trades.plumbing} & Salle de bains</option>
                     <option value="Autre">Autre projet</option>
                   </select>
                 </div>
@@ -216,7 +218,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                      Nom & Prénom *
+                      {t.contactPage.nameLabel}
                     </label>
                     <input
                       type="text"
@@ -229,7 +231,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                      Téléphone *
+                      {t.contactPage.phoneLabel}
                     </label>
                     <input
                       type="tel"
@@ -245,7 +247,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                      Adresse E-mail *
+                      {t.contactPage.emailLabel}
                     </label>
                     <input
                       type="email"
@@ -258,7 +260,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                      Localisation (Code Postal / Ville)
+                      {t.contactPage.locationLabel}
                     </label>
                     <input
                       type="text"
@@ -272,7 +274,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
 
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-700 mb-1">
-                    Votre Message / Détails des travaux à réaliser *
+                    {t.contactPage.messageLabel}
                   </label>
                   <textarea
                     rows={4}
@@ -290,7 +292,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                     className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 hover:shadow-orange-glow active:scale-95"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Envoyer ma demande à BATI</span>
+                    <span>{t.contactPage.submitBtn}</span>
                   </button>
                 </div>
               </form>

@@ -12,8 +12,10 @@ import { ProjectModal } from './components/ProjectModal';
 import { Project } from './types';
 import { InteractiveMap } from './components/InteractiveMap';
 import { ArrowUp } from 'lucide-react';
+import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 
-export function App() {
+function AppContent() {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [portfolioFilter, setPortfolioFilter] = useState<string>('all');
   const [quoteWizardOpen, setQuoteWizardOpen] = useState<boolean>(false);
@@ -85,10 +87,10 @@ export function App() {
           <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <h1 className="text-3xl font-bold uppercase text-brand-dark">
-                Carte des Chantiers Réalisés en Île-de-France
+                {t.nav.mapProjects}
               </h1>
               <p className="text-xs text-gray-500">
-                Visualisez nos chantiers d’appartements, maisons et locaux avec leurs spécificités.
+                {t.map.subtitle}
               </p>
             </div>
             <InteractiveMap onSelectProject={(proj) => setSelectedProject(proj)} />
@@ -142,6 +144,14 @@ export function App() {
       )}
 
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

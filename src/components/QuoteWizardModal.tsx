@@ -3,6 +3,7 @@ import {
   X, Check, ArrowRight, ArrowLeft, Upload, 
   Sparkles, CheckCircle2, ShieldCheck, Phone, Mail, User
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface QuoteWizardModalProps {
   isOpen: boolean;
@@ -11,10 +12,11 @@ interface QuoteWizardModalProps {
 }
 
 export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onClose, initialData }) => {
+  const { t } = useLanguage();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     requestType: 'Rénovation Complète',
-    propertyType: 'Appartement',
+    propertyType: t.quoteWizard.step1.types[0],
     surface: initialData?.surface || 75,
     postalCode: '75020',
     city: 'Paris',
@@ -86,6 +88,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
         <button 
           onClick={handleResetAndClose}
           className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors"
+          aria-label={t.common.close}
         >
           <X className="w-5 h-5" />
         </button>
@@ -94,22 +97,24 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
         <div className="bg-slate-900 text-white p-6 sm:p-8">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-orange mb-1">
             <Sparkles className="w-3.5 h-3.5" />
-            BATI • Demande d’Étude & Devis Gratuit
+            {t.quoteWizard.badge}
           </div>
           <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
-            Concrétisons vos travaux de rénovation en Île-de-France
+            {t.quoteWizard.title}
           </h3>
           
           {/* Progress Bar */}
           {!submitted && (
             <div className="mt-6">
               <div className="flex justify-between text-[11px] uppercase tracking-wider text-slate-400 mb-1.5 font-semibold">
-                <span>Étape {step} sur 4 : {
-                  step === 1 ? 'Votre bien' :
-                  step === 2 ? 'Prestations souhaitées' :
-                  step === 3 ? 'Planning & Précisions' :
-                  'Vos Coordonnées'
-                }</span>
+                <span>
+                  {t.quoteWizard.stepIndicator(step)} {
+                    step === 1 ? t.quoteWizard.stepNames.step1 :
+                    step === 2 ? t.quoteWizard.stepNames.step2 :
+                    step === 3 ? t.quoteWizard.stepNames.step3 :
+                    t.quoteWizard.stepNames.step4
+                  }
+                </span>
                 <span>{step * 25}%</span>
               </div>
               <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -131,19 +136,19 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="text-2xl font-bold text-brand-dark uppercase tracking-wide">
-                Demande transmise avec succès !
+                {t.quoteWizard.success.title}
               </h4>
               <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-                Merci <strong>{formData.fullName || 'Monsieur/Madame'}</strong>. Notre équipe étudie votre demande pour vos travaux de <strong>{formData.surface} m² à {formData.postalCode}</strong>.
+                {t.quoteWizard.success.desc(formData.fullName, formData.surface, formData.postalCode)}
               </p>
               <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 max-w-md mx-auto text-xs text-brand-dark text-left space-y-2">
                 <div className="flex items-center gap-2 font-bold text-brand-orange">
                   <ShieldCheck className="w-4 h-4" />
-                  Engagements BATI :
+                  {t.quoteWizard.success.commitmentsTitle}
                 </div>
-                <p>1. Contact téléphonique direct sous <strong>24 heures ouvrées</strong>.</p>
-                <p>2. Déplacement gratuit sur place pour métrés et diagnostic.</p>
-                <p>3. Remise d'un devis clair et transparent sans engagement.</p>
+                <p>{t.quoteWizard.success.commitment1}</p>
+                <p>{t.quoteWizard.success.commitment2}</p>
+                <p>{t.quoteWizard.success.commitment3}</p>
               </div>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
@@ -151,13 +156,13 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-lg shadow-sm flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>Joindre BATI : 06 19 12 85 58</span>
+                  <span>{t.quoteWizard.success.callBtn}</span>
                 </a>
                 <button
                   onClick={handleResetAndClose}
                   className="bg-slate-800 hover:bg-slate-700 text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-lg"
                 >
-                  Fermer
+                  {t.quoteWizard.success.closeBtn}
                 </button>
               </div>
             </div>
@@ -169,19 +174,12 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 <div className="space-y-5 animate-fade-in">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
-                      Type de bien immobilier
+                      {t.quoteWizard.step1.propertyTypeLabel}
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                      {[
-                        'Appartement Haussmannien',
-                        'Appartement Ancien',
-                        'Appartement Contemporain',
-                        'Maison / Pavillon',
-                        'Studio / Deux Pièces',
-                        'Locaux Professionnels / Bureaux'
-                      ].map(type => (
+                      {t.quoteWizard.step1.types.map((type, idx) => (
                         <button
-                          key={type}
+                          key={idx}
                           type="button"
                           onClick={() => setFormData({ ...formData, propertyType: type })}
                           className={`p-3 text-left rounded-xl border text-xs font-medium transition-all ${
@@ -199,7 +197,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                        Surface approximative (m²) *
+                        {t.quoteWizard.step1.surfaceLabel}
                       </label>
                       <input 
                         type="number"
@@ -213,7 +211,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                        Code postal / Commune en Île-de-France *
+                        {t.quoteWizard.step1.postalCodeLabel}
                       </label>
                       <input 
                         type="text"
@@ -233,10 +231,10 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 <div className="space-y-5 animate-fade-in">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-                      Sélectionnez les travaux souhaités
+                      {t.quoteWizard.step2.tradesLabel}
                     </label>
                     <p className="text-[11px] text-gray-500 mb-3">
-                      BATI prend en charge l'ensemble de ces corps de métiers sans intermédiaire.
+                      {t.quoteWizard.step2.tradesDesc}
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {allTradesList.map(trade => {
@@ -270,14 +268,10 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 <div className="space-y-5 animate-fade-in">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
-                      Quand souhaitez-vous démarrer vos travaux ?
+                      {t.quoteWizard.step3.startPeriodLabel}
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                      {[
-                        'Immédiat (sous 1 mois)',
-                        'Dans les 3 prochains mois',
-                        'D’ici 6 mois / En réflexion'
-                      ].map(period => (
+                      {t.quoteWizard.step3.periods.map(period => (
                         <button
                           key={period}
                           type="button"
@@ -297,14 +291,13 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   {/* Plan / Files Upload */}
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Photos actuelles ou plans (Facultatif)
+                      {t.quoteWizard.step3.uploadLabel}
                     </label>
                     <div className="border-2 border-dashed border-gray-300 hover:border-brand-orange rounded-xl p-5 text-center transition-colors">
                       <Upload className="w-6 h-6 text-gray-400 mx-auto mb-2" />
                       <p className="text-xs text-gray-600 font-medium">
-                        Glissez vos fichiers ici ou <span className="text-brand-orange underline cursor-pointer">parcourez vos documents</span>
+                        {t.quoteWizard.step3.uploadHint}
                       </p>
-                      <p className="text-[10px] text-gray-400 mt-1">JPG, PNG, PDF (Max 20 Mo)</p>
                       <input 
                         type="file" 
                         multiple 
@@ -316,11 +309,11 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                         htmlFor="wizard-file" 
                         className="inline-block mt-3 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded cursor-pointer"
                       >
-                        Sélectionner des photos
+                        {t.quoteWizard.step3.uploadBtn}
                       </label>
                       {formData.filesCount > 0 && (
                         <div className="mt-2 text-xs font-bold text-emerald-600">
-                          ✓ {formData.filesCount} fichier(s) joint(s)
+                          {t.quoteWizard.step3.filesUploaded(formData.filesCount)}
                         </div>
                       )}
                     </div>
@@ -328,11 +321,11 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Détails ou demandes particulières
+                      {t.quoteWizard.step3.notesLabel}
                     </label>
                     <textarea
                       rows={3}
-                      placeholder="Précisez votre demande (ex: refaire tableau électrique, peinture salon et pose de parquet...)"
+                      placeholder={t.quoteWizard.step3.notesPlaceholder}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange"
@@ -347,7 +340,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-                        Nom & Prénom *
+                        {t.quoteWizard.step4.nameLabel}
                       </label>
                       <div className="relative">
                         <User className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
@@ -364,7 +357,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
 
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-                        Téléphone *
+                        {t.quoteWizard.step4.phoneLabel}
                       </label>
                       <div className="relative">
                         <Phone className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
@@ -382,7 +375,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
-                      Adresse E-mail *
+                      {t.quoteWizard.step4.emailLabel}
                     </label>
                     <div className="relative">
                       <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
@@ -407,7 +400,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                         required
                       />
                       <span>
-                        J'accepte d'être recontacté(e) par l'équipe BATI pour l'établissement de mon devis. Données protégées.
+                        {t.quoteWizard.step4.termsLabel}
                       </span>
                     </label>
                   </div>
@@ -423,7 +416,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     className="flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
-                    Retour
+                    {t.common.back}
                   </button>
                 ) : <div />}
 
@@ -433,7 +426,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     onClick={() => setStep(step + 1)}
                     className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2"
                   >
-                    <span>Étape suivante</span>
+                    <span>{t.common.next}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 ) : (
@@ -442,7 +435,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                     className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 hover:shadow-orange-glow active:scale-95"
                   >
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>Envoyer ma demande à BATI</span>
+                    <span>{t.contactPage.submitBtn}</span>
                   </button>
                 )}
               </div>

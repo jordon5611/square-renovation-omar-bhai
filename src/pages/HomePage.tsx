@@ -10,6 +10,7 @@ import {
   Star, Phone, Check, ChevronDown, Zap, Paintbrush, 
   Grid, SquareCheck, Wrench
 } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface HomePageProps {
   onNavigate: (page: string, filter?: string) => void;
@@ -22,6 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenQuoteWizard,
   onSelectProject
 }) => {
+  const { t } = useLanguage();
   const heroBeforeAfter = PROJECTS[0];
 
   return (
@@ -44,24 +46,20 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Badge & Values */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs uppercase tracking-widest font-semibold text-brand-orange animate-fade-in">
             <Sparkles className="w-3.5 h-3.5" />
-            BATI • TOUS TRAVAUX DU BÂTIMENT • ÎLE-DE-FRANCE
+            {t.hero.badge}
           </div>
 
           {/* Main Title */}
           <div className="max-w-4xl mx-auto space-y-4">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight uppercase text-white leading-tight">
-              Rénovation & Travaux du Bâtiment <span className="text-brand-orange">en Île-de-France</span>
+              {t.hero.titleStart} <span className="text-brand-orange">{t.hero.titleHighlight}</span>
             </h1>
             <p className="text-sm sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
-              Spécialistes de la rénovation tout corps d'état d’appartements, maisons et locaux professionnels. Électricité, peinture, parquet, carrelage, placo et plomberie.
+              {t.hero.subtitle}
             </p>
             
             <div className="inline-flex items-center justify-center gap-3 text-xs uppercase tracking-widest font-bold text-amber-400 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-xl border border-amber-400/30">
-              <span>Réactivité</span>
-              <span>•</span>
-              <span>Qualité</span>
-              <span>•</span>
-              <span>Fiabilité</span>
+              <span>{t.common.valuesTagline}</span>
             </div>
           </div>
 
@@ -71,7 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={() => onOpenQuoteWizard()}
               className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest px-8 py-4 rounded-xl shadow-lg transition-all hover:shadow-orange-glow active:scale-95 flex items-center justify-center gap-2"
             >
-              <span>Demander un devis gratuit</span>
+              <span>{t.hero.ctaQuote}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
@@ -87,27 +85,27 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="pt-8 grid grid-cols-3 sm:grid-cols-6 gap-3 max-w-4xl mx-auto border-t border-white/10 text-center">
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <Zap className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Électricité</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.electricity}</div>
             </div>
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <Paintbrush className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Peinture</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.painting}</div>
             </div>
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <Hammer className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Parquet</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.parquet}</div>
             </div>
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <Grid className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Carrelage</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.tiling}</div>
             </div>
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <SquareCheck className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Placo</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.placo}</div>
             </div>
             <div className="p-2.5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 flex flex-col items-center">
               <Wrench className="w-4 h-4 text-brand-orange mb-1" />
-              <div className="text-[11px] font-bold text-white uppercase">Plomberie</div>
+              <div className="text-[11px] font-bold text-white uppercase">{t.hero.trades.plumbing}</div>
             </div>
           </div>
 
@@ -121,13 +119,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-orange">
               <Award className="w-4 h-4" />
-              BATI • TOUS CORPS D'ÉTAT EN ÎLE-DE-FRANCE
+              {t.philosophy.tag}
             </div>
             <h2 className="text-2xl sm:text-4xl font-heading font-extrabold uppercase text-brand-dark tracking-tight leading-tight">
-              Une exécution soignée pour tous vos travaux
+              {t.philosophy.title}
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">
-              L'entreprise <strong>BATI (SARL BATI 75)</strong> intervient sur l’ensemble de l'<strong>Île-de-France</strong>. Nous prenons en charge votre chantier de A à Z avec un interlocuteur unique, réactif et disponible.
+              {t.philosophy.description}
             </p>
             
             <div className="space-y-3 pt-2">
@@ -136,7 +134,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-xs text-gray-700">
-                  <strong>Réactivité immédiate :</strong> Déplacement rapide en Île-de-France et devis détaillé sous 24h à 48h.
+                  {t.philosophy.bullet1}
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -144,7 +142,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-xs text-gray-700">
-                  <strong>Qualité & Respect des normes :</strong> Électricité NF C 15-100, plomberie multicouche, enduits lisses et parquets vitrifiés.
+                  {t.philosophy.bullet2}
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -152,7 +150,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-xs text-gray-700">
-                  <strong>Fiabilité & Délais tenus :</strong> Engagement contractuel sur les dates de livraison du chantier.
+                  {t.philosophy.bullet3}
                 </div>
               </div>
             </div>
@@ -162,7 +160,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onClick={() => onNavigate('societe')}
                 className="bg-brand-slate hover:bg-slate-700 text-white text-xs uppercase font-bold tracking-wider px-6 py-3.5 rounded-lg shadow-sm transition-all flex items-center gap-2"
               >
-                <span>En savoir plus sur l'entreprise</span>
+                <span>{t.philosophy.discoverBtn}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -174,7 +172,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               beforeImage={heroBeforeAfter.imageBefore}
               afterImage={heroBeforeAfter.imageAfter}
               title={heroBeforeAfter.title}
-              subtitle={`${heroBeforeAfter.surface} m² • Île-de-France`}
+              subtitle={`${heroBeforeAfter.surface} ${t.common.sqm} • Île-de-France`}
             />
           </div>
 
@@ -187,13 +185,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-              NOS EXPERTISES TECHNIQUES
+              {t.services.tag}
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-              Tous Travaux du Bâtiment en Île-de-France
+              {t.services.title}
             </h2>
             <p className="text-xs text-gray-500">
-              Des compétences complètes pour rénover vos intérieurs du sol au plafond
+              {t.services.subtitle}
             </p>
           </div>
 
@@ -221,10 +219,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                       {service.shortDesc}
                     </p>
                     <div className="space-y-1.5 pt-2 border-t border-gray-100">
-                      {service.trades.slice(0, 3).map((t, idx) => (
+                      {service.trades.slice(0, 3).map((tItem, idx) => (
                         <div key={idx} className="text-[11px] text-gray-500 flex items-center gap-1.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
-                          {t}
+                          {tItem}
                         </div>
                       ))}
                     </div>
@@ -234,7 +232,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     onClick={() => onNavigate('realisations', service.id === 'atelier-menuiserie' ? 'all' : service.id)}
                     className="w-full mt-4 py-2.5 border border-slate-200 hover:border-brand-orange hover:bg-orange-50/50 text-brand-slate hover:text-brand-orange text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center justify-center gap-1.5"
                   >
-                    <span>Voir les chantiers</span>
+                    <span>{t.services.viewProjects}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -249,49 +247,18 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-            MÉTHODOLOGIE ÉPROUVÉE
+            {t.method.tag}
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-            Votre chantier en 6 étapes sereines avec BATI
+            {t.method.title}
           </h2>
           <p className="text-xs text-gray-500">
-            Un processus cadré pour garantir la qualité des finitions et le respect des délais.
+            {t.method.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              step: '01',
-              title: 'Visite & Diagnostic Gratuit',
-              desc: 'Rendez-vous sur place en Île-de-France par notre équipe technique pour évaluer l\'état du bien, les réseaux et vos besoins.'
-            },
-            {
-              step: '02',
-              title: 'Devis Détaillé & Transparent',
-              desc: 'Chiffrage clair par corps d\'état (électricité, plomberie, peinture...) sans mauvaise surprise.'
-            },
-            {
-              step: '03',
-              title: 'Préparation & Approvisionnement',
-              desc: 'Protection soignée des lieux et commande des matériaux sélectionnés.'
-            },
-            {
-              step: '04',
-              title: 'Réalisation Tous Corps d’État',
-              desc: 'Démolition, placo, électricité, plomberie, ragréage, carrelage, parquet et peintures soignées.'
-            },
-            {
-              step: '05',
-              title: 'Suivi de Chantier en Direct',
-              desc: 'Communication continue pour suivre l\'avancement quotidien des travaux.'
-            },
-            {
-              step: '06',
-              title: 'Nettoyage & Livraison Clé en Main',
-              desc: 'Nettoyage complet du chantier, contrôle qualité minutieux et remise des clés.'
-            }
-          ].map((item, i) => (
+          {t.method.steps.map((item, i) => (
             <div 
               key={i}
               className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:border-brand-orange/50 transition-all space-y-3 relative group"
@@ -312,18 +279,6 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* 5. INTERACTIVE MAP OF PROJECTS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-            COUVERTURE RÉGIONALE
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-            La carte de nos chantiers en Île-de-France
-          </h2>
-          <p className="text-xs text-gray-500">
-            Explorez nos réalisations à travers toute la région Île-de-France
-          </p>
-        </div>
-
         <InteractiveMap onSelectProject={onSelectProject} />
       </section>
 
@@ -333,10 +288,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-              TÉMOIGNAGES CLIENTS
+              {t.testimonials.tag}
             </div>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-              La satisfaction de nos clients en Île-de-France
+              {t.testimonials.title}
             </h2>
             <div className="flex items-center justify-center gap-1.5 text-amber-500 text-sm font-bold">
               <div className="flex">
@@ -344,7 +299,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
               </div>
-              <span className="text-gray-700 ml-1">4.9 / 5 sur Avis Vérifiés</span>
+              <span className="text-gray-700 ml-1">{t.testimonials.verifiedScore}</span>
             </div>
           </div>
 
@@ -381,10 +336,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center space-y-2">
           <div className="text-xs font-bold uppercase tracking-widest text-brand-orange">
-            QUESTIONS FRÉQUENTES
+            {t.faq.tag}
           </div>
           <h2 className="text-2xl sm:text-3xl font-heading font-extrabold uppercase text-brand-dark tracking-tight">
-            Tout savoir avant de démarrer vos travaux
+            {t.faq.title}
           </h2>
         </div>
 
@@ -411,10 +366,10 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="bg-brand-navy text-white rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
             <h3 className="text-2xl sm:text-4xl font-heading font-extrabold uppercase tracking-tight text-white">
-              Vous avez un projet de travaux en Île-de-France ?
+              {t.ctaBanner.title}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              BATI se déplace gratuitement pour étudier votre projet et vous remettre un devis sur-mesure.
+              {t.ctaBanner.subtitle}
             </p>
           </div>
 
@@ -423,7 +378,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={() => onOpenQuoteWizard()}
               className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest px-8 py-4 rounded-xl shadow-lg transition-all hover:shadow-orange-glow active:scale-95 flex items-center justify-center gap-2"
             >
-              <span>Demander un devis en ligne</span>
+              <span>{t.ctaBanner.quoteBtn}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <a

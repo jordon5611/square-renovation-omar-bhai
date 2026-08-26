@@ -3,12 +3,14 @@ import L from 'leaflet';
 import { PROJECTS } from '../data/projects';
 import { Project, ProjectCategory } from '../types';
 import { MapPin, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface InteractiveMapProps {
   onSelectProject?: (project: Project) => void;
 }
 
 export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject }) => {
+  const { t } = useLanguage();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<L.Marker[]>([]);
@@ -93,7 +95,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
           <div style="font-size: 13px; font-weight: bold; color: #1E293B; line-height: 1.3; margin-bottom: 4px;">${project.title}</div>
           <div style="font-size: 11px; color: #64748B; margin-bottom: 8px;">Surface : ${project.surface} m² | Durée : ${project.duration}</div>
           <button id="btn-project-${project.id}" style="width: 100%; background: #495D74; color: white; border: none; padding: 6px 0; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer;">
-            Découvrir le chantier
+            ${t.map.discoverBtn}
           </button>
         </div>
       `;
@@ -115,7 +117,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
       markersRef.current.push(marker);
     });
 
-  }, [filteredProjects, onSelectProject]);
+  }, [filteredProjects, onSelectProject, t]);
 
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
@@ -126,11 +128,11 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
           <div className="flex items-center gap-2">
             <MapPin className="w-5 h-5 text-brand-orange" />
             <h3 className="text-base font-bold text-brand-dark uppercase tracking-wider">
-              Carte de nos Chantiers Réalisés en Île-de-France
+              {t.map.title}
             </h3>
           </div>
           <p className="text-xs text-gray-500 mt-0.5">
-            Cliquez sur un marqueur pour explorer les spécificités techniques du chantier
+            {t.map.subtitle}
           </p>
         </div>
 
@@ -144,7 +146,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
                 : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
             }`}
           >
-            Tous ({PROJECTS.length})
+            {t.map.filters.all} ({PROJECTS.length})
           </button>
           <button
             onClick={() => setSelectedCategory('haussmannien')}
@@ -154,7 +156,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
                 : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
             }`}
           >
-            Ancien & Haussmannien
+            {t.map.filters.haussmannien}
           </button>
           <button
             onClick={() => setSelectedCategory('contemporain')}
@@ -164,7 +166,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
                 : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
             }`}
           >
-            Contemporain
+            {t.map.filters.contemporain}
           </button>
           <button
             onClick={() => setSelectedCategory('loft')}
@@ -174,7 +176,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
                 : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
             }`}
           >
-            Loft & Atypique
+            {t.map.filters.loft}
           </button>
         </div>
       </div>
@@ -208,7 +210,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
               onClick={() => onSelectProject && onSelectProject(activeProject)}
               className="w-full mt-1 bg-brand-slate hover:bg-slate-700 text-white text-xs uppercase font-bold tracking-wider py-2 rounded flex items-center justify-center gap-1.5 transition-colors"
             >
-              <span>Voir la fiche complète</span>
+              <span>{t.map.viewFullSheet}</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -216,8 +218,8 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
       </div>
 
       <div className="p-4 bg-slate-50 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-        <span>📍 Chantiers réalisés en Île-de-France (75, 92, 93, 94, 78, 91, 95, 77)</span>
-        <span className="font-semibold text-brand-slate">Déplacement gratuit pour diagnostic & devis</span>
+        <span>{t.map.coverageNote}</span>
+        <span className="font-semibold text-brand-slate">{t.map.freeEstimateNote}</span>
       </div>
 
     </div>
