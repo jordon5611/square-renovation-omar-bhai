@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     scope: [
       'Restauration des moulures et corniches en staff',
       'Parquet chêne massif Point de Hongrie huilé',
-      'Menuiseries sur-mesure laquées (Atelier Square)',
+      'Menuiseries sur-mesure laquées (Atelier BATI)',
       'Plomberie & Sanitaires en marbre de Carrare',
       'Climatisation réversible gainée invisible',
       'Électricité & Domotique intégrée Lutron'

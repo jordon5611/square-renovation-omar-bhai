@@ -10,7 +10,7 @@ export const TESTIMONIALS: Testimonial[] = [
     surface: 145,
     rating: 5,
     date: 'Janvier 2025',
-    quote: 'Nous avions une appréhension énorme avant de lancer les travaux dans notre appartement haussmannien. L’équipe Square Rénovation a été exemplaire : un suivi hebdomadaire rigoureux avec photos, un respect au jour près de la date de livraison et des finitions en menuiserie et peinture dignes d’un palace.'
+    quote: 'Nous avions une appréhension énorme avant de lancer les travaux dans notre appartement haussmannien. L’équipe BATI a été exemplaire : un suivi rigoureux avec photos, un respect au jour près de la date de livraison et des finitions en placo, électricité et peinture d’une qualité irréprochable.'
   },
   {
     id: '2',
@@ -21,7 +21,7 @@ export const TESTIMONIALS: Testimonial[] = [
     surface: 260,
     rating: 5,
     date: 'Novembre 2024',
-    quote: 'Chantier mené tambour battant pendant les 3 mois d’été. Zéro dépassement de budget, un conducteur de travaux toujours joignable et un niveau de finition exceptionnel sur les cloisons acoustiques et la menuiserie.'
+    quote: 'Chantier mené tambour battant pendant les 3 mois d’été. Zéro dépassement de budget, un interlocuteur BATI toujours joignable et un niveau de finition exceptionnel sur les cloisons acoustiques et l’électricité.'
   },
   {
     id: '3',
@@ -32,7 +32,7 @@ export const TESTIMONIALS: Testimonial[] = [
     surface: 130,
     rating: 5,
     date: 'Octobre 2024',
-    quote: 'Leur atelier de menuiserie intégré fait toute la différence ! Ils ont conçu notre bibliothèque monumentale et notre cuisine sur mesure avec une précision d’orfèvre. Nous recommandons Square les yeux fermés.'
+    quote: 'La réactivité et le savoir-faire de l’équipe font toute la différence ! Ils ont transformé notre intérieur avec une précision d’orfèvre et des matériaux de grande qualité. Nous recommandons BATI les yeux fermés.'
   },
   {
     id: '4',
@@ -43,25 +43,25 @@ export const TESTIMONIALS: Testimonial[] = [
     surface: 190,
     rating: 5,
     date: 'Décembre 2024',
-    quote: 'En tant qu’architecte, trouver une entreprise générale capable de lire et respecter scrupuleusement les détails d’exécution est rare. Square Rénovation est mon partenaire de confiance à Paris.'
+    quote: 'En tant qu’architecte, trouver une entreprise générale capable de lire et respecter scrupuleusement les détails d’exécution est rare. BATI est notre partenaire de confiance en Île-de-France.'
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     category: 'prix',
-    question: 'Quel est le prix moyen d’une rénovation au m² à Paris ?',
-    answer: 'À Paris, une rénovation de qualité varie généralement entre 1 000 € et 3 000 € TTC par m² selon l’état initial du bien. Un simple rafraîchissement (peintures, ponçage parquet) se situe entre 900 € et 1 400 €/m², une rénovation complète (cuisine, salles de bains, plomberie, électricité) entre 1 500 € et 2 400 €/m², et une rénovation lourde avec restructuration structurelle et menuiseries d’art entre 2 500 € et 3 500 €+/m².'
+    question: 'Quel est le délai d’obtention d’un devis chez BATI ?',
+    answer: 'Après visite sur place ou transmission de vos plans, nous vous remettons un devis détaillé poste par poste sous 48h à 72h ouvrées, 100% gratuit et sans engagement.'
   },
   {
     category: 'delais',
-    question: 'Quels sont les délais moyens pour rénover un appartement à Paris ?',
-    answer: 'Pour un appartement parisien classique de 80 à 120 m², comptez en moyenne 3 à 5 mois de travaux après validation des plans et commandes des matériaux. Chez Square Rénovation, nous nous engageons contractuellement sur un calendrier précis avec pénalités de retard.'
+    question: 'Quels sont les délais moyens pour rénover un appartement ou une maison ?',
+    answer: 'Pour un appartement classique de 60 à 120 m², comptez en moyenne 2 à 4 mois de travaux selon l’ampleur des lots. Chez BATI, nous nous engageons contractuellement sur un calendrier précis avec pénalités de retard.'
   },
   {
     category: 'demarches',
     question: 'Faut-il obligatoirement un architecte pour mon projet ?',
-    answer: 'Non, faire appel à un architecte n’est pas obligatoire si la structure est préservée. En tant qu’entreprise générale Tous Corps d’État, notre bureau d’études intégré et nos conducteurs de travaux réalisent vos plans d’implantation et notes techniques. Si votre projet comprend des modifications de porteurs complexes, nous travaillons avec nos bureaux d’études de structure (BET) partenaires.'
+    answer: 'Non, faire appel à un architecte n’est pas obligatoire si la structure porteuse est préservée. En tant qu’entreprise générale Tous Corps d’État, nos conducteurs de travaux et chefs de chantier réalisent vos plans d’implantation et l’ensemble des études techniques.'
   },
   {
     category: 'garanties',
@@ -71,6 +71,6 @@ export const FAQS: FAQItem[] = [
   {
     category: 'demarches',
     question: 'Comment gérez-vous la copropriété et les nuisances sonores ?',
-    answer: 'Nous prenons en charge la protection intégrale des parties communes (ascenseur, tapis d’escalier, couloirs), affichons les avis légaux en avance et respectons strictement les horaires légaux de bruit de la Ville de Paris (interdiction le week-end et en soirée).'
+    answer: 'Nous prenons en charge la protection intégrale des parties communes (ascenseur, tapis d’escalier, couloirs), affichons les avis légaux en avance et respectons strictement les horaires légaux de bruit en Île-de-France (interdiction le week-end et en soirée).'
   }
 ];
