@@ -5,6 +5,7 @@ import { TESTIMONIALS, FAQS } from '../data/testimonials';
 import { Project } from '../types';
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 import { InteractiveMap } from '../components/InteractiveMap';
+import { VideoShowcase } from '../components/VideoShowcase';
 import { 
   Award, ArrowRight, Sparkles, Hammer, ChevronRight,
   Star, Phone, Check, ChevronDown, Zap, Paintbrush, 
@@ -32,14 +33,19 @@ export const HomePage: React.FC<HomePageProps> = ({
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[92vh] flex items-center justify-center pt-32 sm:pt-36 pb-20 bg-slate-950 overflow-hidden">
-        {/* Luxury Background Image with Dark Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85" 
-            alt="Rénovation Bâtiment Île-de-France - BATI"
+        {/* Luxury Background Video / Image with Dark Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            poster="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85"
             className="w-full h-full object-cover opacity-35 scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-900/40" />
+          >
+            <source src="/videos/bati-travaux-artisans.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-900/40" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-8">
@@ -206,6 +212,9 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         </div>
       </section>
+
+      {/* 2.5 REAL CHANTIER VIDEO SHOWCASE */}
+      <VideoShowcase onOpenQuoteWizard={() => onOpenQuoteWizard()} />
 
       {/* 3. EXPERTISE & SERVICES CATEGORIES */}
       <section className="bg-slate-50 py-16 sm:py-24 border-y border-gray-200">
