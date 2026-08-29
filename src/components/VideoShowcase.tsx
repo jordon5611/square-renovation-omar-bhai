@@ -189,10 +189,10 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ onOpenQuoteWizard 
               <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
                 <div className="flex items-center gap-1.5 text-brand-orange text-xs font-bold">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>{isFrench ? 'Garantie Décennale' : '10-Year Warranty'}</span>
+                  <span>{isFrench ? 'Exigence & Qualité' : 'Quality & Craftsmanship'}</span>
                 </div>
                 <p className="text-[11px] text-slate-400">
-                  {isFrench ? 'Assurance AXA BTP sur tous nos chantiers' : 'Comprehensive French insurance coverage'}
+                  {isFrench ? 'Rigueur technique et finitions soignées' : 'High technical standards and precision work'}
                 </p>
               </div>
 

@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
             <span className="text-slate-700">•</span>
             <div className="flex items-center gap-1.5 text-slate-300">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
-              <span>Garantie Décennale • Tous Travaux du Bâtiment</span>
+              <span>Qualité & Fiabilité • Tous Travaux du Bâtiment</span>
             </div>
           </div>
 

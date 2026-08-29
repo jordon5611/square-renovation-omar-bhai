@@ -65,8 +65,8 @@ export const FAQS: FAQItem[] = [
   },
   {
     category: 'garanties',
-    question: 'Quelles sont les assurances et garanties incluses ?',
-    answer: 'Tous nos chantiers bénéficient de la Garantie Décennale (couvrant la structure et les réseaux pendant 10 ans), de la Garantie de Parfait Achèvement (1 an) et d’une assurance Responsabilité Civile Professionnelle complète souscrite auprès de grandes compagnies françaises (AXA / SMABTP).'
+    question: 'Quelles sont les assurances et engagements inclus ?',
+    answer: 'Tous nos chantiers bénéficient d’une assurance Responsabilité Civile Professionnelle complète et d’un engagement de parfait achèvement, assurant une exécution soignée et conforme aux règles de l’art.'
   },
   {
     category: 'demarches',

@@ -43,7 +43,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc: 'Un interlocuteur unique pour la gestion intégrale de votre chantier de A à Z.',
     description: 'Vous n’avez pas à coordonner 10 artisans différents. Votre conducteur de travaux BATI dédié assure le pilotage complet : démolition, maçonnerie, plomberie, électricité, carrelage, placo et peinture, dans le respect absolu des délais et des devis validés.',
     icon: 'ShieldCheck',
-    trades: ['Interlocuteur unique', 'Comptes-rendus de chantier', 'Garantie Décennale AXA', 'Planning garanti contractuellement', 'Nettoyage de fin de chantier'],
+    trades: ['Interlocuteur unique', 'Comptes-rendus de chantier', 'Assurance Professionnelle BTP', 'Planning garanti contractuellement', 'Nettoyage de fin de chantier'],
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'
   },
   {
