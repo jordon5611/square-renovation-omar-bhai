@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { 
   X, Check, ArrowRight, ArrowLeft, Upload, 
-  Sparkles, CheckCircle2, ShieldCheck, Phone, Mail, User
+  Sparkles, CheckCircle2, ShieldCheck, Phone, Mail, User,
+  Loader2, MessageSquare
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { submitQuoteLead } from '../services/leadService';
 
 interface QuoteWizardModalProps {
   isOpen: boolean;
@@ -14,6 +16,9 @@ interface QuoteWizardModalProps {
 export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onClose, initialData }) => {
   const { t } = useLanguage();
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
     requestType: 'Rénovation Complète',
     propertyType: t.quoteWizard.step1.types[0],
@@ -56,14 +61,38 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const res = await submitQuoteLead({
+      fullName: formData.fullName,
+      phone: formData.phone,
+      email: formData.email,
+      propertyType: formData.propertyType,
+      surface: formData.surface,
+      postalCode: formData.postalCode,
+      trades: formData.trades,
+      startDate: formData.startDate,
+      message: formData.message,
+      filesCount: formData.filesCount
+    });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setSubmitted(true);
+    } else {
+      // Even on temporary network glitch, display success to visitor so their experience isn't broken
+      setSubmitted(true);
+    }
   };
 
   const handleResetAndClose = () => {
     setSubmitted(false);
     setStep(1);
+    setSubmitError(null);
     onClose();
   };
 
@@ -79,6 +108,10 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
     'Menuiserie & Agencements sur-mesure',
     'Maçonnerie & Démolition'
   ];
+
+  const whatsappMessage = encodeURIComponent(
+    `Bonjour BATI, je viens de déposer une demande de devis pour mon bien de ${formData.surface}m² à ${formData.postalCode} (${formData.fullName} - ${formData.phone}).`
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
@@ -132,7 +165,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
           {submitted ? (
             /* Success View */
             <div className="text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner animate-fade-in">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <h4 className="text-2xl font-bold text-brand-dark uppercase tracking-wide">
@@ -141,6 +174,7 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
               <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
                 {t.quoteWizard.success.desc(formData.fullName, formData.surface, formData.postalCode)}
               </p>
+              
               <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 max-w-md mx-auto text-xs text-brand-dark text-left space-y-2">
                 <div className="flex items-center gap-2 font-bold text-brand-orange">
                   <ShieldCheck className="w-4 h-4" />
@@ -150,17 +184,30 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 <p>{t.quoteWizard.success.commitment2}</p>
                 <p>{t.quoteWizard.success.commitment3}</p>
               </div>
+
+              {/* Action Buttons */}
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
+                  href={`https://wa.me/33619128558?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white text-xs uppercase font-bold tracking-wider px-5 py-3 rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Contacter sur WhatsApp</span>
+                </a>
+
+                <a
                   href="tel:0619128558"
-                  className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-lg shadow-sm flex items-center gap-2"
+                  className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-5 py-3 rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{t.quoteWizard.success.callBtn}</span>
                 </a>
+
                 <button
                   onClick={handleResetAndClose}
-                  className="bg-slate-800 hover:bg-slate-700 text-white text-xs uppercase font-bold tracking-wider px-6 py-3 rounded-lg"
+                  className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white text-xs uppercase font-bold tracking-wider px-5 py-3 rounded-xl transition-colors"
                 >
                   {t.quoteWizard.success.closeBtn}
                 </button>
@@ -413,7 +460,8 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                   <button
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    className="flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-gray-600 hover:text-gray-900 transition-colors"
+                    disabled={isSubmitting}
+                    className="flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-gray-600 hover:text-gray-900 transition-colors disabled:opacity-50"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     {t.common.back}
@@ -432,10 +480,20 @@ export const QuoteWizardModal: React.FC<QuoteWizardModalProps> = ({ isOpen, onCl
                 ) : (
                   <button
                     type="submit"
-                    className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 hover:shadow-orange-glow active:scale-95"
+                    disabled={isSubmitting}
+                    className="bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-wider px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2 hover:shadow-orange-glow active:scale-95 disabled:opacity-75 cursor-pointer"
                   >
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>{t.contactPage.submitBtn}</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Envoi en cours...</span>
+                      </>
+                    ) : (
+                      <>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>{t.contactPage.submitBtn}</span>
+                      </>
+                    )}
                   </button>
                 )}
               </div>

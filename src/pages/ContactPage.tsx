@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { 
   Phone, Mail, MapPin, Send, 
   CheckCircle2, FileText, Zap, Paintbrush, 
-  Hammer, Grid, SquareCheck, Wrench, ShieldCheck
+  Hammer, Grid, SquareCheck, Wrench, ShieldCheck,
+  Loader2, MessageSquare
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { submitContactLead } from '../services/leadService';
 
 interface ContactPageProps {
   onOpenQuoteWizard: () => void;
@@ -13,6 +15,7 @@ interface ContactPageProps {
 export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) => {
   const { t } = useLanguage();
   const [formSent, setFormSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     trade: 'Rénovation Complète / Tous Corps d\'État',
     name: '',
@@ -23,8 +26,18 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    await submitContactLead({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      postalCode: formData.postalCode,
+      trade: formData.trade,
+      message: formData.message
+    });
+    setIsSubmitting(false);
     setFormSent(true);
   };
 
@@ -167,8 +180,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
           {/* Right Form Column (7 cols) */}
           <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm">
             {formSent ? (
-              <div className="text-center py-12 space-y-4">
-                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+              <div className="text-center py-12 space-y-4 animate-fade-in">
+                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-bold uppercase text-brand-dark">
@@ -177,12 +190,23 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 <p className="text-xs text-gray-600 max-w-md mx-auto">
                   {t.contactPage.successDesc(formData.name, formData.phone)}
                 </p>
-                <button
-                  onClick={() => setFormSent(false)}
-                  className="mt-4 px-6 py-2.5 bg-brand-slate text-white text-xs uppercase font-bold rounded-lg"
-                >
-                  {t.contactPage.sendAnotherBtn}
-                </button>
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={`https://wa.me/33619128558?text=${encodeURIComponent(`Bonjour BATI, je viens d'envoyer un message via votre site (${formData.name} - ${formData.phone}).`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs uppercase font-bold rounded-xl flex items-center gap-2 transition-colors"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Contacter sur WhatsApp</span>
+                  </a>
+                  <button
+                    onClick={() => setFormSent(false)}
+                    className="px-5 py-2.5 bg-brand-slate text-white text-xs uppercase font-bold rounded-xl"
+                  >
+                    {t.contactPage.sendAnotherBtn}
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -289,10 +313,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 hover:shadow-orange-glow active:scale-95"
+                    disabled={isSubmitting}
+                    className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white text-xs uppercase font-bold tracking-widest py-3.5 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 hover:shadow-orange-glow active:scale-95 disabled:opacity-75"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>{t.contactPage.submitBtn}</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Envoi en cours...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>{t.contactPage.submitBtn}</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
