@@ -11,7 +11,7 @@ export const GuideEstimatorPage: React.FC<GuideEstimatorPageProps> = ({ onOpenQu
   const { t } = useLanguage();
 
   return (
-    <div className="pt-24 pb-20 space-y-20">
+    <div className="pt-32 sm:pt-36 pb-20 space-y-20">
       
       {/* Header Banner */}
       <section className="bg-slate-950 text-white py-20 relative overflow-hidden">

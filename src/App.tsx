@@ -84,7 +84,7 @@ function AppContent() {
         )}
 
         {currentPage === 'carte' && (
-          <div className="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="pt-36 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <h1 className="text-3xl font-bold uppercase text-brand-dark">
                 {t.nav.mapProjects}

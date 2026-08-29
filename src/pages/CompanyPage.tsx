@@ -16,7 +16,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onOpenQuoteWizard }) =
   const domainIcons = [Zap, Paintbrush, Hammer, Grid, SquareCheck, Wrench];
 
   return (
-    <div className="pt-24 pb-20 space-y-20">
+    <div className="pt-32 sm:pt-36 pb-20 space-y-20">
       
       {/* Hero Header */}
       <section className="bg-slate-950 text-white py-20 relative overflow-hidden">

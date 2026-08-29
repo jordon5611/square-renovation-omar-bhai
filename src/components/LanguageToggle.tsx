@@ -1,9 +1,8 @@
 import React from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { Globe } from 'lucide-react';
 
 interface LanguageToggleProps {
-  variant?: 'compact' | 'full';
+  variant?: 'compact' | 'full' | 'dark' | 'light';
   className?: string;
 }
 
@@ -12,7 +11,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
 
   if (variant === 'full') {
     return (
-      <div className={`flex items-center gap-2 p-1.5 bg-slate-100 rounded-xl ${className}`}>
+      <div className={`flex items-center gap-2 p-1 bg-slate-100 rounded-xl ${className}`}>
         <button
           onClick={() => setLanguage('fr')}
           className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${
@@ -23,7 +22,7 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
           aria-label="Passer en français"
         >
           <span className="text-sm">🇫🇷</span>
-          <span>Français (FR)</span>
+          <span>FR</span>
         </button>
         <button
           onClick={() => setLanguage('en')}
@@ -35,23 +34,55 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
           aria-label="Switch to English"
         >
           <span className="text-sm">🇬🇧</span>
-          <span>English (EN)</span>
+          <span>EN</span>
         </button>
       </div>
     );
   }
 
-  return (
-    <div className={`inline-flex items-center bg-slate-100/90 border border-slate-200/80 p-0.5 rounded-lg text-[11px] font-bold tracking-wider select-none ${className}`}>
-      <div className="pl-1.5 pr-1 text-slate-400">
-        <Globe className="w-3.5 h-3.5" />
+  // Dark variant for top bar
+  if (variant === 'dark') {
+    return (
+      <div className={`inline-flex items-center bg-slate-900 border border-slate-800 p-0.5 rounded-full text-[11px] font-semibold tracking-wider select-none ${className}`}>
+        <button
+          type="button"
+          onClick={() => setLanguage('fr')}
+          className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 text-[10px] uppercase ${
+            language === 'fr'
+              ? 'bg-brand-orange text-white font-bold shadow-sm'
+              : 'text-slate-400 hover:text-white'
+          }`}
+          aria-label="Français"
+        >
+          <span>🇫🇷</span>
+          <span>FR</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setLanguage('en')}
+          className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 text-[10px] uppercase ${
+            language === 'en'
+              ? 'bg-brand-orange text-white font-bold shadow-sm'
+              : 'text-slate-400 hover:text-white'
+          }`}
+          aria-label="English"
+        >
+          <span>🇬🇧</span>
+          <span>EN</span>
+        </button>
       </div>
+    );
+  }
+
+  // Clean light variant
+  return (
+    <div className={`inline-flex items-center bg-slate-100 border border-slate-200 p-0.5 rounded-full text-[11px] font-semibold tracking-wider select-none ${className}`}>
       <button
         type="button"
         onClick={() => setLanguage('fr')}
-        className={`px-2 py-1 rounded-md transition-all flex items-center gap-1 ${
+        className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 text-[11px] uppercase ${
           language === 'fr'
-            ? 'bg-white text-brand-dark shadow-sm font-extrabold border border-slate-200/60'
+            ? 'bg-white text-brand-dark font-extrabold shadow-sm'
             : 'text-slate-500 hover:text-brand-dark'
         }`}
         aria-label="Français"
@@ -62,9 +93,9 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
       <button
         type="button"
         onClick={() => setLanguage('en')}
-        className={`px-2 py-1 rounded-md transition-all flex items-center gap-1 ${
+        className={`px-2.5 py-1 rounded-full transition-all flex items-center gap-1 text-[11px] uppercase ${
           language === 'en'
-            ? 'bg-white text-brand-dark shadow-sm font-extrabold border border-slate-200/60'
+            ? 'bg-white text-brand-dark font-extrabold shadow-sm'
             : 'text-slate-500 hover:text-brand-dark'
         }`}
         aria-label="English"

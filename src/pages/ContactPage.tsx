@@ -29,7 +29,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenQuoteWizard }) =
   };
 
   return (
-    <div className="pt-24 pb-20 space-y-16">
+    <div className="pt-32 sm:pt-36 pb-20 space-y-16">
       
       {/* Header Banner */}
       <section className="bg-slate-950 text-white py-16 sm:py-20 relative overflow-hidden">

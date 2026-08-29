@@ -30,7 +30,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-20 sm:space-y-28">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 bg-slate-950 overflow-hidden">
+      <section className="relative min-h-[92vh] flex items-center justify-center pt-32 sm:pt-36 pb-20 bg-slate-950 overflow-hidden">
         {/* Luxury Background Image with Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
