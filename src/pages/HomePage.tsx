@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PROJECTS } from '../data/projects';
 import { SERVICES } from '../data/services';
 import { TESTIMONIALS, FAQS } from '../data/testimonials';
@@ -24,7 +24,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectProject
 }) => {
   const { t } = useLanguage();
-  const heroBeforeAfter = PROJECTS[0];
+  const [selectedSliderId, setSelectedSliderId] = useState<string>('electricite-tableau-normes-paris');
+  const heroBeforeAfter = PROJECTS.find(p => p.id === selectedSliderId) || PROJECTS[0];
 
   return (
     <div className="space-y-20 sm:space-y-28">
@@ -167,12 +168,39 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Interactive Before & After Feature Card */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 space-y-3">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setSelectedSliderId('electricite-tableau-normes-paris')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                  selectedSliderId === 'electricite-tableau-normes-paris'
+                    ? 'bg-brand-orange text-white shadow-sm'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                }`}
+              >
+                <Zap className="w-3.5 h-3.5" />
+                <span>Tableau Électrique NF C 15-100</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedSliderId('haussmann-avenue-montaigne')}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                  selectedSliderId === 'haussmann-avenue-montaigne'
+                    ? 'bg-brand-orange text-white shadow-sm'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                }`}
+              >
+                <Award className="w-3.5 h-3.5" />
+                <span>Rénovation Appartement</span>
+              </button>
+            </div>
+
             <BeforeAfterSlider
               beforeImage={heroBeforeAfter.imageBefore}
               afterImage={heroBeforeAfter.imageAfter}
               title={heroBeforeAfter.title}
-              subtitle={`${heroBeforeAfter.surface} ${t.common.sqm} • Île-de-France`}
+              subtitle={`${heroBeforeAfter.location} • ${heroBeforeAfter.duration}`}
             />
           </div>
 

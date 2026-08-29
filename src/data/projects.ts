@@ -2,6 +2,36 @@ import { Project } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: 'electricite-tableau-normes-paris',
+    title: 'Remise aux Normes Électriques & Nouveau Tableau Général NF C 15-100',
+    category: 'contemporain',
+    categoryLabel: 'Électricité & Mise aux Normes',
+    location: 'Paris 20e (Dupont de l\'Eure)',
+    arrondissement: 'Paris 20e',
+    surface: 90,
+    duration: '1 semaine',
+    budgetTier: '€€',
+    imageBefore: '/images/electricite-tableau-before.jpg',
+    imageAfter: '/images/electricite-tableau-after.jpg',
+    gallery: [
+      '/images/electricite-tableau-after.jpg',
+      '/images/electricite-tableau-before.jpg'
+    ],
+    description: 'Remplacement complet d’un ancien tableau électrique vétuste par un tableau divisionnaire Schneider Electric moderne conforme à la norme NF C 15-100 : protection différentielle 30mA, horloge modulaire programmable, disjoncteurs divisionnaires et réfection de l\'ensemble des lignes d\'alimentation.',
+    scope: [
+      'Dépose de l’ancien tableau vétuste et sécurisation des circuits',
+      'Pose d’un tableau divisionnaire Schneider Electric 3 rangées',
+      'Protection différentielle 30mA haute sensibilité',
+      'Création et repérage des circuits (Prises, Éclairage, Chauffage, Climatisation)',
+      'Horloge modulaire pour pilotage automatique',
+      'Mise à la terre et attestation de conformité Consuel'
+    ],
+    lat: 48.8680,
+    lng: 2.3950,
+    year: 2025,
+    featured: true
+  },
+  {
     id: 'haussmann-avenue-montaigne',
     title: 'Rénovation d’un Appartement Haussmannien de Prestige',
     category: 'haussmannien',
