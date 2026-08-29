@@ -14,19 +14,19 @@ export const SERVICES: ServiceItem[] = [
     id: 'contemporain',
     title: 'Rénovation d’Appartements Contemporains',
     shortDesc: 'Design épuré, volumes ouverts, intégration domotique et matériaux nobles.',
-    description: 'Nous transformons les intérieurs parisiens pour créer des espaces de vie fluides, lumineux et fonctionnels. Nos artisans réalisent des finitions sans compromis : béton ciré, faux plafonds avec gorges lumineuses LED, portes affleurantes invisibles et verrières sur-mesure.',
+    description: 'Nous transformons les intérieurs pour créer des espaces de vie fluides, lumineux et fonctionnels. Nos artisans réalisent des finitions sans compromis : béton ciré, faux plafonds avec gorges lumineuses LED, portes affleurantes invisibles et verrières sur-mesure.',
     icon: 'Sparkles',
     trades: ['Volumes ouverts & IPN', 'Éclairage architectural LED', 'Céramiques grand format', 'Domotique', 'Portes sous tenture'],
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'atelier-menuiserie',
-    title: 'Notre Atelier de Menuiserie Sur-Mesure',
-    shortDesc: 'Fabrication artisanale française de dressings, bibliothèques, cuisines et claustras sur-mesure.',
-    description: 'Grâce à notre atelier de menuiserie intégré, chaque meuble est pensé au millimètre près pour optimiser l’espace parisien. Nous travaillons les essences les plus nobles (chêne massif, noyer d’Amérique, frêne) associées à des laques mates de précision et des ferrures invisibles Blum.',
-    icon: 'Hammer',
-    trades: ['Bibliothèques sur-mesure', 'Dressings aménagés avec LED', 'Cuisines d’architecte', 'Claustras & verrières bois', 'Banquettes intégrées'],
-    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80'
+    id: 'maisons-pavillons',
+    title: 'Rénovation de Maisons & Pavillons',
+    shortDesc: 'Rénovation intérieure et extérieure, réagencement des espaces et isolation thermique en Île-de-France.',
+    description: 'De la remise aux normes complète à l’embellissement de votre maison ou pavillon, nos équipes qualifiées réalisent l’ensemble des travaux de second œuvre et d’agencement pour valoriser votre patrimoine.',
+    icon: 'Home',
+    trades: ['Isolation thermique & phonique', 'Réfection sols & cloisons', 'Rénovation globale', 'Chauffage & plomberie', 'Finitions soignées'],
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'familial-lofts',
@@ -41,16 +41,16 @@ export const SERVICES: ServiceItem[] = [
     id: 'tous-corps-etat',
     title: 'Entreprise Générale Tous Corps d’État (TCE)',
     shortDesc: 'Un interlocuteur unique pour la gestion intégrale de votre chantier de A à Z.',
-    description: 'Vous n’avez pas à coordonner 10 artisans différents. Votre conducteur de travaux SQUARE dédié assure le pilotage complet : démolition, maçonnerie, plomberie, chauffage, électricité, carrelage, menuiserie et peinture, dans le respect absolu des délais et des devis validés.',
+    description: 'Vous n’avez pas à coordonner 10 artisans différents. Votre conducteur de travaux BATI dédié assure le pilotage complet : démolition, maçonnerie, plomberie, électricité, carrelage, placo et peinture, dans le respect absolu des délais et des devis validés.',
     icon: 'ShieldCheck',
-    trades: ['Interlocuteur unique', 'Comptes-rendus hebdomadaires', 'Garantie Décennale AXA', 'Planning garanti contractuellement', 'Nettoyage de fin de chantier'],
+    trades: ['Interlocuteur unique', 'Comptes-rendus de chantier', 'Garantie Décennale AXA', 'Planning garanti contractuellement', 'Nettoyage de fin de chantier'],
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'tertiaire-bureaux',
     title: 'Bureaux & Espaces Professionnels',
-    shortDesc: 'Rénovation et agencement de locaux d’entreprises, cabinets médicaux et cabinets d’avocats à Paris.',
-    description: 'Nous concevons des environnements de travail haut de gamme, alliant confort acoustique, ergonomie, conformité ERP / accessibilité et esthétique valorisante pour l’image de marque de votre entreprise.',
+    shortDesc: 'Rénovation et agencement de locaux d’entreprises, cabinets médicaux et commerces en Île-de-France.',
+    description: 'Nous concevons des environnements de travail soignés, alliant confort acoustique, ergonomie, conformité ERP / accessibilité et esthétique valorisante pour l’image de marque de votre entreprise.',
     icon: 'Briefcase',
     trades: ['Cloisons vitrées acoustiques', 'Courants forts & faibles', 'Contrôle d’accès', 'Espaces d’accueil prestigieux', 'Respect des normes ERP'],
     image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80'
