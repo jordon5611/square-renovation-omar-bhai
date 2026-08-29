@@ -241,16 +241,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 )}
               </div>
 
-              {/* Menuiserie */}
-              <button 
-                onClick={() => handleNavClick('menuiserie')}
-                className={`text-[13px] font-semibold transition-colors hover:text-brand-orange uppercase tracking-wider whitespace-nowrap ${
-                  currentPage === 'menuiserie' ? 'text-brand-orange font-bold' : 'text-slate-700'
-                }`}
-              >
-                {t.nav.woodwork}
-              </button>
-
               {/* Contact */}
               <button 
                 onClick={() => handleNavClick('contact')}
@@ -360,14 +350,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               </button>
             </div>
 
-            <button 
-              onClick={() => handleNavClick('menuiserie')}
-              className={`block w-full text-left py-2.5 text-sm font-bold uppercase tracking-wider ${
-                currentPage === 'menuiserie' ? 'text-brand-orange' : 'text-gray-800'
-              }`}
-            >
-              {t.nav.woodwork}
-            </button>
             <button 
               onClick={() => handleNavClick('contact')}
               className={`block w-full text-left py-2.5 text-sm font-bold uppercase tracking-wider ${
