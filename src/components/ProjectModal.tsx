@@ -15,7 +15,7 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, onOpenQuoteWizard }) => {
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'slider' | 'gallery'>('slider');
+  const [activeTab, setActiveTab] = useState<'slider' | 'gallery' | 'video'>('gallery');
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string | null>(null);
 
   if (!project) return null;
@@ -81,17 +81,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
 
           {/* Tab buttons for View mode */}
           <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-            <div className="flex gap-2">
-              <button
-                onClick={() => setActiveTab('slider')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${
-                  activeTab === 'slider'
-                    ? 'bg-brand-orange text-white shadow-sm'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {t.projectModal.sliderTab}
-              </button>
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setActiveTab('gallery')}
                 className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${
@@ -102,20 +92,61 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose, on
               >
                 {t.projectModal.galleryTab(project.gallery.length)}
               </button>
+
+              {project.videoBefore && (
+                <button
+                  onClick={() => setActiveTab('video')}
+                  className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                    activeTab === 'video'
+                      ? 'bg-brand-orange text-white shadow-sm'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  <span>🎬 Vidéo Avant Travaux</span>
+                </button>
+              )}
+
+              <button
+                onClick={() => setActiveTab('slider')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${
+                  activeTab === 'slider'
+                    ? 'bg-brand-orange text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {t.projectModal.sliderTab}
+              </button>
             </div>
           </div>
 
           {/* Media Tab Body */}
-          {activeTab === 'slider' ? (
+          {activeTab === 'slider' && (
             <BeforeAfterSlider
               beforeImage={project.imageBefore}
               afterImage={project.imageAfter}
               title={project.title}
               subtitle={`${project.surface} ${t.common.sqm} • ${project.location}`}
             />
-          ) : (
+          )}
+
+          {activeTab === 'video' && project.videoBefore && (
+            <div className="rounded-2xl overflow-hidden bg-black aspect-video border border-gray-200 shadow-inner relative">
+              <video
+                src={project.videoBefore}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">
+                État Initial Avant Rénovation BATI
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'gallery' && (
             <div className="space-y-4">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {project.gallery.map((img, idx) => (
                   <div 
                     key={idx}

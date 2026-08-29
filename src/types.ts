@@ -19,6 +19,8 @@ export interface Project {
   budgetTier: '€€' | '€€€' | '€€€€';
   imageBefore: string;
   imageAfter: string;
+  videoBefore?: string;
+  videoAfter?: string;
   gallery: string[];
   description: string;
   scope: string[];

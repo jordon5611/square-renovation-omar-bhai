@@ -2,6 +2,39 @@ import { Project } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: 'renovation-bureaux-pro-idf',
+    title: 'Rénovation Complète de Bureaux Professionnels & Salle de Réunion',
+    category: 'pro',
+    categoryLabel: 'Bureaux & Espaces Pro',
+    location: 'Île-de-France',
+    arrondissement: 'Île-de-France',
+    surface: 160,
+    duration: '3 mois',
+    budgetTier: '€€€',
+    imageBefore: '/images/bureaux-salle-reunion-after.jpg',
+    imageAfter: '/images/bureaux-salle-reunion-after.jpg',
+    videoBefore: '/videos/bureaux-renovation-before.mp4',
+    gallery: [
+      '/images/bureaux-salle-reunion-after.jpg',
+      '/images/bureaux-espace-detente-after.jpg',
+      '/images/bureaux-couloir-after.jpg',
+      '/images/bureaux-salle-manger-after.jpg'
+    ],
+    description: 'Rénovation intégrale et agencement d’un plateau d’entreprise : création d’une grande salle de conférence avec dalles LED et climatisation intégrée, pose de sols souples grand passage effet parquet, réfection complète des couloirs, aménagement d’une cuisine / tisanerie et pose de cloisons vitrées avec film sablé décoratif.',
+    scope: [
+      'Curage et redistribution complète des cloisons',
+      'Plafonds suspendus acoustiques dalles 60x60 avec éclairage LED',
+      'Revêtement de sol PVC acoustique grand passage aspect chêne',
+      'Menuiseries intérieures, cloisons vitrées et portes coupe-feu',
+      'Réseau électrique tertiaire, prises de sol et RJ45 informatique',
+      'Espace tisanerie / cuisine avec meuble évier et rangements'
+    ],
+    lat: 48.8750,
+    lng: 2.3700,
+    year: 2025,
+    featured: true
+  },
+  {
     id: 'electricite-tableau-normes-paris',
     title: 'Remise aux Normes Électriques & Nouveau Tableau Général NF C 15-100',
     category: 'contemporain',
