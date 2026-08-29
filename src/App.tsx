@@ -5,7 +5,6 @@ import { HomePage } from './pages/HomePage';
 import { CompanyPage } from './pages/CompanyPage';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { WoodworkPage } from './pages/WoodworkPage';
-import { GuideEstimatorPage } from './pages/GuideEstimatorPage';
 import { ContactPage } from './pages/ContactPage';
 import { QuoteWizardModal } from './components/QuoteWizardModal';
 import { ProjectModal } from './components/ProjectModal';
@@ -99,10 +98,6 @@ function AppContent() {
 
         {currentPage === 'menuiserie' && (
           <WoodworkPage onOpenQuoteWizard={() => handleOpenQuoteWizard()} />
-        )}
-
-        {currentPage === 'guide' && (
-          <GuideEstimatorPage onOpenQuoteWizard={handleOpenQuoteWizard} />
         )}
 
         {currentPage === 'contact' && (

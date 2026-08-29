@@ -251,16 +251,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
                 {t.nav.woodwork}
               </button>
 
-              {/* Guide Tarifs */}
-              <button 
-                onClick={() => handleNavClick('guide')}
-                className={`text-[13px] font-semibold transition-colors hover:text-brand-orange uppercase tracking-wider whitespace-nowrap ${
-                  currentPage === 'guide' ? 'text-brand-orange font-bold' : 'text-slate-700'
-                }`}
-              >
-                {t.nav.guide}
-              </button>
-
               {/* Contact */}
               <button 
                 onClick={() => handleNavClick('contact')}
@@ -377,14 +367,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenQ
               }`}
             >
               {t.nav.woodwork}
-            </button>
-            <button 
-              onClick={() => handleNavClick('guide')}
-              className={`block w-full text-left py-2.5 text-sm font-bold uppercase tracking-wider ${
-                currentPage === 'guide' ? 'text-brand-orange' : 'text-gray-800'
-              }`}
-            >
-              {t.nav.guide}
             </button>
             <button 
               onClick={() => handleNavClick('contact')}
