@@ -10,6 +10,7 @@ import { QuoteWizardModal } from './components/QuoteWizardModal';
 import { ProjectModal } from './components/ProjectModal';
 import { Project } from './types';
 import { InteractiveMap } from './components/InteractiveMap';
+import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { ArrowUp } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext';
 
@@ -127,11 +128,14 @@ function AppContent() {
         }}
       />
 
+      {/* WhatsApp Floating Button for 06 19 12 85 58 */}
+      <WhatsAppFloatingButton />
+
       {/* Floating Scroll-to-Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-brand-navy hover:bg-brand-orange text-white rounded-full shadow-lg flex items-center justify-center transition-all animate-fade-in group"
+          className="fixed bottom-24 right-6 z-40 w-11 h-11 bg-brand-navy hover:bg-brand-orange text-white rounded-full shadow-lg flex items-center justify-center transition-all animate-fade-in group border border-slate-700"
           aria-label="Remonter en haut"
         >
           <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
