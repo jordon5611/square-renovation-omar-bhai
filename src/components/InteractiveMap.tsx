@@ -33,9 +33,9 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onSelectProject 
         scrollWheelZoom: false
       });
 
-      // Add CartoDB Positron elegant light map tiles
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+      // Clean free OpenStreetMap tiles with no watermarks and no API keys required
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         maxZoom: 19,
       }).addTo(map);
 
